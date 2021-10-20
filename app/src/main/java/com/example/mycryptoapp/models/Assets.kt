@@ -1,9 +1,9 @@
-package com.example.mycryptoapp
+package com.example.mycryptoapp.models
 
 
 import com.google.gson.annotations.SerializedName
 
-data class CryptosAndDate(
+data class Assets(
     @SerializedName("data")
     val cryptos: List<Crypto>,
     @SerializedName("timestamp")
