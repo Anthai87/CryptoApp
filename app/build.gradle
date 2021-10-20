@@ -48,8 +48,11 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0-alpha04'
 
 
-    // Navigation Component
+    // Navigation Component: https://developer.android.com/guide/navigation/navigation-getting-started
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
+
+    // ShimmerRecyclerView: https://github.com/sharish/ShimmerRecyclerView
+    implementation 'com.github.sharish:ShimmerRecyclerView:v1.3'
 
 }
