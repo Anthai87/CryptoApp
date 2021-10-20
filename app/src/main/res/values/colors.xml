@@ -13,7 +13,8 @@
 
     <!-- Text and card-row color  -->
     <color name="white">#FFFFFFFF</color>
-    <color name="lightGray">#F9F9F9</color>
+    <color name="lightGray">#CEF9F9F9</color>
+    <color name="gray">#A9A9A9</color>
     <color name="dark">#1C2329</color>
     <color name="darker">#151B20</color>
     <color name="black">#000000</color>
