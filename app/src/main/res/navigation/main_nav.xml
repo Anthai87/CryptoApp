@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/cryptosFragment"
-        android:name="com.example.mycryptoapp.CryptosFragment"
+        android:name="com.example.mycryptoapp.ui.fragments.cryptos.CryptosFragment"
         android:label="Cryptos"
         tools:layout="@layout/fragment_cryptos" />
     <fragment
         android:id="@+id/favoriteCryptosFragment"
-        android:name="com.example.mycryptoapp.FavoriteCryptosFragment"
+        android:name="com.example.mycryptoapp.ui.fragments.favorites.FavoriteCryptosFragment"
         android:label="Favorite Cryptos"
         tools:layout="@layout/fragment_favorite_cryptos" />
     <fragment
         android:id="@+id/myPortfolioFragment"
-        android:name="com.example.mycryptoapp.MyPortfolioFragment"
+        android:name="com.example.mycryptoapp.ui.fragments.portfolio.MyPortfolioFragment"
         android:label="My Portfolio"
         tools:layout="@layout/fragment_my_portfolio" />
     <fragment
         android:id="@+id/cryptoAdviceFragment"
-        android:name="com.example.mycryptoapp.CryptoAdviceFragment"
+        android:name="com.example.mycryptoapp.ui.fragments.cryptoadvice.CryptoAdviceFragment"
         android:label="Crypto Advice Investment"
         tools:layout="@layout/fragment_crypto_advice" />
 </navigation>
