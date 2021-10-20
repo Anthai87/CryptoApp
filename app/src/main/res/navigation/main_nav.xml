@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_nav">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/cryptosFragment">
 
+    <fragment
+        android:id="@+id/cryptosFragment"
+        android:name="com.example.mycryptoapp.CryptosFragment"
+        android:label="fragment_cryptos"
+        tools:layout="@layout/fragment_cryptos" />
+    <fragment
+        android:id="@+id/favoriteCryptosFragment"
+        android:name="com.example.mycryptoapp.FavoriteCryptosFragment"
+        android:label="fragment_favorite_cryptos"
+        tools:layout="@layout/fragment_favorite_cryptos" />
+    <fragment
+        android:id="@+id/myPortfolioFragment"
+        android:name="com.example.mycryptoapp.MyPortfolioFragment"
+        android:label="fragment_my_portfolio"
+        tools:layout="@layout/fragment_my_portfolio" />
+    <fragment
+        android:id="@+id/cryptoAdviceFragment"
+        android:name="com.example.mycryptoapp.CryptoAdviceFragment"
+        android:label="fragment_crypto_advice"
+        tools:layout="@layout/fragment_crypto_advice" />
 </navigation>
