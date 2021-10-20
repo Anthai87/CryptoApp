@@ -8,21 +8,21 @@
     <fragment
         android:id="@+id/cryptosFragment"
         android:name="com.example.mycryptoapp.CryptosFragment"
-        android:label="fragment_cryptos"
+        android:label="Cryptos"
         tools:layout="@layout/fragment_cryptos" />
     <fragment
         android:id="@+id/favoriteCryptosFragment"
         android:name="com.example.mycryptoapp.FavoriteCryptosFragment"
-        android:label="fragment_favorite_cryptos"
+        android:label="Favorite Cryptos"
         tools:layout="@layout/fragment_favorite_cryptos" />
     <fragment
         android:id="@+id/myPortfolioFragment"
         android:name="com.example.mycryptoapp.MyPortfolioFragment"
-        android:label="fragment_my_portfolio"
+        android:label="My Portfolio"
         tools:layout="@layout/fragment_my_portfolio" />
     <fragment
         android:id="@+id/cryptoAdviceFragment"
         android:name="com.example.mycryptoapp.CryptoAdviceFragment"
-        android:label="fragment_crypto_advice"
+        android:label="Crypto Advice Investment"
         tools:layout="@layout/fragment_crypto_advice" />
 </navigation>

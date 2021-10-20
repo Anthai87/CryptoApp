@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/cryptosFragment"
+        android:icon="@drawable/ic_crypto"
+        android:title="@string/cryptos_fragment" />
+
+    <item
+        android:id="@+id/favoriteCryptosFragment"
+        android:icon="@drawable/ic_star"
+        android:title="@string/favorite_cryptos_fragment" />
+
+    <item
+        android:id="@+id/myPortfolioFragment"
+        android:icon="@drawable/ic_portfolio"
+        android:title="@string/my_portfolio_fragment" />
+
+    <item
+        android:id="@+id/cryptoAdviceFragment"
+        android:icon="@drawable/ic_crypto_invest_advice"
+        android:title="@string/crypto_advice_fragment" />
+
+</menu>
