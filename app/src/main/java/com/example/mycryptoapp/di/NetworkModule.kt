@@ -16,17 +16,10 @@ import javax.inject.Singleton
 @InstallIn(ActivityComponent::class)
 object NetworkModule {
 
-    fun provideHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .readTimeout(15, TimeUnit.SECONDS)
-            .connectTimeout(15, TimeUnit.SECONDS)
-            .build()
-    }
-
     @Singleton
     @Provides
-    fun provideConverterFactory(): GsonConverterFactory {
-        return GsonConverterFactory.create()
+    fun provideApiService(retrofit: Retrofit): CryptoAssetsApi {
+        return retrofit.create(CryptoAssetsApi::class.java)
     }
 
     @Singleton
@@ -44,8 +37,15 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit): CryptoAssetsApi {
-        return retrofit.create(CryptoAssetsApi::class.java)
+    fun provideConverterFactory(): GsonConverterFactory {
+        return GsonConverterFactory.create()
+    }
+
+    fun provideHttpClient(): OkHttpClient {
+        return OkHttpClient.Builder()
+            .readTimeout(15, TimeUnit.SECONDS)
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .build()
     }
 
 }
