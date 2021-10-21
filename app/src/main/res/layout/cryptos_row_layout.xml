@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="result"
-            type="com.example.mycryptoapp.models.Assets" />
+            name="crypto"
+            type="com.example.mycryptoapp.models.Crypto" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
