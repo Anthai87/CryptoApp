@@ -2,10 +2,12 @@ package com.example.mycryptoapp.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mycryptoapp.databinding.CryptosRowLayoutBinding
 import com.example.mycryptoapp.models.Assets
 import com.example.mycryptoapp.models.Crypto
+import com.example.mycryptoapp.util.CryptosDiffUtil
 
 class CryptosAdapter: RecyclerView.Adapter<CryptosAdapter.MyViewHolder>() {
 
@@ -43,7 +45,9 @@ class CryptosAdapter: RecyclerView.Adapter<CryptosAdapter.MyViewHolder>() {
     }
 
     fun setData(assets: Assets) {
+        val cryptosDiffUtil = CryptosDiffUtil(cryptos, assets.cryptos)
+        val diffUtilResult = DiffUtil.calculateDiff(cryptosDiffUtil)
         cryptos = assets.cryptos
-        notifyDataSetChanged()
+        diffUtilResult.dispatchUpdatesTo(this)
     }
 }
