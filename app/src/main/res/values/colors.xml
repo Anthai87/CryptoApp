@@ -18,4 +18,8 @@
     <color name="dark">#1C2329</color>
     <color name="darker">#151B20</color>
     <color name="black">#000000</color>
+
+    <!-- ChangePercent24Hr color  -->
+    <color name="green">#00c9a7</color>
+    <color name="red">#FF0000</color>
 </resources>
