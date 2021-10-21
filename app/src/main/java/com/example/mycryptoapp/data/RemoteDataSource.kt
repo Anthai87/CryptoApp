@@ -9,7 +9,7 @@ class RemoteDataSource @Inject  constructor(
     private val cryptoAssetsApi: CryptoAssetsApi
 ) {
 
-    suspend fun getAssets(queries: Map<String, String>): Response<Assets> {
-        return cryptoAssetsApi.getAssets(queries)
+    suspend fun getAssets(): Response<Assets> {
+        return cryptoAssetsApi.getAssets()
     }
  }

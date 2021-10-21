@@ -19,8 +19,8 @@ class MainViewModel @Inject constructor(
 
     var assetsResponse: MutableLiveData<NetworkResult<Assets>> = MutableLiveData()
 
-    fun getAssets(queries: Map<String, String>) = viewModelScope.launch {
-        val response = repository.remote.getAssets(queries)
+    fun getAssets() = viewModelScope.launch {
+        val response = repository.remote.getAssets()
         val assets = response.body()
         assetsResponse.value = NetworkResult.Success(assets!!)
     }
