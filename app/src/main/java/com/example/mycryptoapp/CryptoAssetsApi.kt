@@ -8,7 +8,7 @@ import retrofit2.http.QueryMap
 interface CryptoAssetsApi {
 
     @GET("v2/assets")
-    fun getAssets(
+    suspend fun getAssets(
         @QueryMap queries: Map<String, String>
     ): Response<Assets>
 
