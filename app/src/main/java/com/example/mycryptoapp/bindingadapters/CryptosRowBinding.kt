@@ -31,7 +31,7 @@ class CryptosRowBinding {
         }
 
         private fun addPlusOrMinusSign(percent: String): String {
-            return if (percent.toDouble() > 0) "+$percent" else "-$percent"
+            return if (percent.toDouble() > 0) "+$percent" else "$percent"
         }
 
         private fun addPercentSign(addPlusOrMinusSign: String): String {
