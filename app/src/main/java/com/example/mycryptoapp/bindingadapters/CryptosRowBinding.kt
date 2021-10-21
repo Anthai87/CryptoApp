@@ -26,8 +26,25 @@ class CryptosRowBinding {
         @BindingAdapter("reformatChangePercent24Hr")
         @JvmStatic
         fun reformatChangePercent24Hr(textView: TextView, changePercent24Hr: String) {
-            textView.text = setColor(textView, addPercentSign(addPlusOrMinusSign(changePercent24Hr))).toString()
+            setColor(textView, changePercent24Hr)
+            textView.text = addPercentSign(addPlusOrMinusSign(changePercent24Hr))
+        }
 
+        private fun setColor(textView: TextView, changePercent24Hr: String) {
+            return if (changePercent24Hr.toDouble() > 0)
+                textView.setTextColor(
+                    ContextCompat.getColor(
+                        textView.context,
+                        R.color.green
+                    )
+                )
+            else
+                textView.setTextColor(
+                    ContextCompat.getColor(
+                        textView.context,
+                        R.color.red
+                    )
+                )
         }
 
         private fun addPlusOrMinusSign(percent: String): String {
@@ -36,23 +53,6 @@ class CryptosRowBinding {
 
         private fun addPercentSign(addPlusOrMinusSign: String): String {
             return "$addPlusOrMinusSign%"
-        }
-
-        private fun setColor(textView: TextView, changePercent24Hr: String) {
-            return if (changePercent24Hr.toDouble() > 0)
-                    textView.setTextColor(
-                        ContextCompat.getColor(
-                            textView.context,
-                            R.color.green
-                        )
-                    )
-                 else
-                    textView.setTextColor(
-                        ContextCompat.getColor(
-                            textView.context,
-                            R.color.red
-                        )
-                    )
         }
 
     }
