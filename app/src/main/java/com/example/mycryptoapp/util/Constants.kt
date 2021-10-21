@@ -1,4 +1,4 @@
-package com.example.mycryptoapp
+package com.example.mycryptoapp.util
 
 class Constants {
 

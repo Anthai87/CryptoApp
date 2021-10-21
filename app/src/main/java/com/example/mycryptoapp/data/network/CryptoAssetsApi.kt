@@ -1,4 +1,4 @@
-package com.example.mycryptoapp
+package com.example.mycryptoapp.data.network
 
 import com.example.mycryptoapp.models.Assets
 import retrofit2.Response

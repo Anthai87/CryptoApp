@@ -1,7 +1,7 @@
 package com.example.mycryptoapp.di
 
-import com.example.mycryptoapp.Constants.Companion.BASE_URL_ASSETS
-import com.example.mycryptoapp.CryptoAssetsApi
+import com.example.mycryptoapp.util.Constants.Companion.BASE_URL_ASSETS
+import com.example.mycryptoapp.data.network.CryptoAssetsApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
