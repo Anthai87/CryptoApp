@@ -25,4 +25,9 @@
         android:name="com.example.mycryptoapp.CryptoAdviceFragment"
         android:label="Crypto Advice Investment"
         tools:layout="@layout/fragment_crypto_advice" />
+    <fragment
+        android:id="@+id/buyCrypto"
+        android:name="com.example.mycryptoapp.buyCrypto"
+        android:label="fragment_buy_crypto"
+        tools:layout="@layout/fragment_buy_crypto" />
 </navigation>
