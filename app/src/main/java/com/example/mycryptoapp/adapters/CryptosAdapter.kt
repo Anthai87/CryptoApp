@@ -25,7 +25,7 @@ class CryptosAdapter: RecyclerView.Adapter<CryptosAdapter.MyViewHolder>() {
         companion object {
             fun from(parent: ViewGroup): MyViewHolder {
                 val  layoutInflater = LayoutInflater.from(parent.context)
-                val binding = CryptosRowLayoutBinding.inflate(layoutInflater)
+                val binding = CryptosRowLayoutBinding.inflate(layoutInflater, parent, false)
                 return MyViewHolder(binding)
             }
         }
