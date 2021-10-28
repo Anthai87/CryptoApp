@@ -51,7 +51,7 @@ class CryptosFragment : Fragment() {
         }
 
         pie.data(dataPieChart)
-        pie.title("Salaries Overview")
+        //pie.title("Salaries Overview")
         chartView1.setChart(pie)
 
 
