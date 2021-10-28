@@ -12,10 +12,10 @@ class CryptosRowBinding {
         @BindingAdapter("reformatPriceUsd")
         @JvmStatic
         fun reformatPriceUsd(textView: TextView, priceUsd: String) {
-            textView.text = addDollarSymbol(setTwoDecimal(priceUsd))
+            textView.text = addDollarSymbol(setTwoDecimalToPrice(priceUsd))
         }
 
-        private fun setTwoDecimal(price: String): String {
+        private fun setTwoDecimalToPrice(price: String): String {
             return String.format("%.2f", price.toDouble())
         }
 
@@ -27,7 +27,7 @@ class CryptosRowBinding {
         @JvmStatic
         fun reformatChangePercent24Hr(textView: TextView, changePercent24Hr: String) {
             setColor(textView, changePercent24Hr)
-            textView.text = addPercentSign(addPlusOrMinusSign(changePercent24Hr))
+            textView.text = addPercentSign(addPlusOrMinusSign(setTwoDecimalToPercent(changePercent24Hr)))
         }
 
         private fun setColor(textView: TextView, changePercent24Hr: String) {
@@ -45,6 +45,10 @@ class CryptosRowBinding {
                         R.color.red
                     )
                 )
+        }
+
+        private fun setTwoDecimalToPercent(percent: String): String {
+            return String.format("%.2f", percent.toDouble())
         }
 
         private fun addPlusOrMinusSign(percent: String): String {
