@@ -3,23 +3,14 @@ package com.example.mycryptoapp.util
 import androidx.recyclerview.widget.DiffUtil
 import com.example.mycryptoapp.models.Crypto
 
-class CryptosDiffUtil(
-    private val oldList: List<Crypto>,
-    private val newList: List<Crypto>
-): DiffUtil.Callback() {
-    override fun getOldListSize(): Int {
-        return oldList.size
+class CryptosDiffUtil: DiffUtil.ItemCallback<Crypto>() {
+
+    override fun areItemsTheSame(oldItem: Crypto, newItem: Crypto): Boolean {
+        return oldItem === newItem
     }
 
-    override fun getNewListSize(): Int {
-        return newList.size
+    override fun areContentsTheSame(oldItem: Crypto, newItem: Crypto): Boolean {
+        return oldItem == newItem
     }
 
-    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition] === newList[newItemPosition]
-    }
-
-    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition] == newList[newItemPosition]
-    }
 }

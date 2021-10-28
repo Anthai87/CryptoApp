@@ -2,16 +2,14 @@ package com.example.mycryptoapp.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mycryptoapp.databinding.CryptosRowLayoutBinding
 import com.example.mycryptoapp.models.Assets
 import com.example.mycryptoapp.models.Crypto
 import com.example.mycryptoapp.util.CryptosDiffUtil
 
-class CryptosAdapter: RecyclerView.Adapter<CryptosAdapter.MyViewHolder>() {
-
-    private var cryptos = emptyList<Crypto>()
+class CryptosAdapter: ListAdapter<Crypto, CryptosAdapter.MyViewHolder>(CryptosDiffUtil()) {
 
     class MyViewHolder(
         private val binding: CryptosRowLayoutBinding
@@ -36,18 +34,12 @@ class CryptosAdapter: RecyclerView.Adapter<CryptosAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentCrypto = cryptos[position]
+        val currentCrypto = getItem(position)
         holder.bind(currentCrypto)
     }
 
-    override fun getItemCount(): Int {
-        return cryptos.size
+    fun setData(assets: Assets) {
+        submitList(assets.cryptos)
     }
 
-    fun setData(assets: Assets) {
-        val cryptosDiffUtil = CryptosDiffUtil(cryptos, assets.cryptos)
-        val diffUtilResult = DiffUtil.calculateDiff(cryptosDiffUtil)
-        cryptos = assets.cryptos
-        diffUtilResult.dispatchUpdatesTo(this)
-    }
 }
