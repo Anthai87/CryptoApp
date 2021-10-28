@@ -16,7 +16,7 @@ class CryptosRowBinding {
         }
 
         private fun setTwoDecimal(price: String): String {
-            return String.format("$%.2f", price.toDouble())
+            return String.format("%.2f", price.toDouble())
         }
 
         private fun addDollarSymbol(price: String): String {
