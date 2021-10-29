@@ -77,5 +77,6 @@ dependencies {
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
     kapt "androidx.hilt:hilt-compiler:1.0.0"
 
-
+    // ROOM Database
+    implementation 'androidx.room:room-common:2.2.6'
 }
