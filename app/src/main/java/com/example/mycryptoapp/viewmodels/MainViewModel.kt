@@ -1,4 +1,4 @@
-package com.example.mycryptoapp
+package com.example.mycryptoapp.viewmodels
 
 import android.app.Application
 import android.content.Context

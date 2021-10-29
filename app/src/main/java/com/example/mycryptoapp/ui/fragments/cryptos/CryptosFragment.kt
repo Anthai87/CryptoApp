@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mycryptoapp.MainViewModel
+import com.example.mycryptoapp.viewmodels.MainViewModel
 import com.example.mycryptoapp.R
 import com.example.mycryptoapp.adapters.CryptosAdapter
 import com.example.mycryptoapp.util.NetworkResult
