@@ -9,6 +9,21 @@ class CryptosRowBinding {
 
     companion object {
 
+        @BindingAdapter("reformatCryptoSymbol")
+        @JvmStatic
+        fun reformatCryptoSymbol(textView: TextView, cryptoSymbol: String) {
+            textView.text = when(cryptoSymbol.trim().length) {
+                1 -> "$cryptoSymbol       "
+                2 -> "$cryptoSymbol      "
+                3 -> "$cryptoSymbol     "
+                4 -> "$cryptoSymbol    "
+                5 -> "$cryptoSymbol   "
+                6 -> "$cryptoSymbol  "
+                7 -> "$cryptoSymbol "
+                else -> "$cryptoSymbol"
+            }
+        }
+
         @BindingAdapter("reformatPriceUsd")
         @JvmStatic
         fun reformatPriceUsd(textView: TextView, priceUsd: String) {
