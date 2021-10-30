@@ -18,6 +18,7 @@ class CryptosRowBinding {
         @BindingAdapter("onCryptoClickListener")
         @JvmStatic
         fun onCryptoClickListener(cryptoRowLayout: ConstraintLayout, crypto: Crypto) {
+            Log.d("onCryptoClickListener", crypto.toString())
             cryptoRowLayout.setOnClickListener {
                 try {
                     val action =
