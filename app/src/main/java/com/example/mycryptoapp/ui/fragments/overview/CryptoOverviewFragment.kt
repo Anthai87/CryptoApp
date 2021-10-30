@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.mycryptoapp.R
 
-class CryptoFragment : Fragment() {
+class CryptoOverviewFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_crypto, container, false)
+        return inflater.inflate(R.layout.fragment_crypto_overview, container, false)
     }
 
 }
