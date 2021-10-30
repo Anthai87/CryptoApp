@@ -5,4 +5,5 @@
     <string name="favorite_cryptos_fragment">Favorite Cryptos</string>
     <string name="my_portfolio_fragment">My Portfolio</string>
     <string name="crypto_advice_fragment">Crypto Advice</string>
+    <string name="search">search</string>
 </resources>

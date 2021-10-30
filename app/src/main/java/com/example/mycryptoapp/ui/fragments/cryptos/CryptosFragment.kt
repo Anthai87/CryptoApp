@@ -2,11 +2,10 @@ package com.example.mycryptoapp.ui.fragments.cryptos
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,14 +13,16 @@ import com.example.mycryptoapp.viewmodels.MainViewModel
 import com.example.mycryptoapp.R
 import com.example.mycryptoapp.adapters.CryptosAdapter
 import com.example.mycryptoapp.databinding.FragmentCryptosBinding
+import com.example.mycryptoapp.models.Assets
+import com.example.mycryptoapp.models.Crypto
 import com.example.mycryptoapp.util.NetworkResult
 import com.example.mycryptoapp.util.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_cryptos.view.*
 import kotlinx.coroutines.launch
+import java.util.*
 
 @AndroidEntryPoint
-class CryptosFragment : Fragment() {
+class CryptosFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private var _binding: FragmentCryptosBinding? = null
     private val binding get() = _binding!!
@@ -44,6 +45,8 @@ class CryptosFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.mainViewModel = mMainViewModel
 
+        setHasOptionsMenu(true)
+
         setupRecyclerView()
         readDatabase()
 
@@ -54,6 +57,29 @@ class CryptosFragment : Fragment() {
         binding.recyclerview.adapter = mAdapter
         binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
         showShimmerEffect()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.cryptos_menu, menu)
+
+        val search = menu.findItem(R.id.menu_search)
+        val searchView = search.actionView as? SearchView
+        searchView?.isSubmitButtonEnabled = true
+        searchView?.setOnQueryTextListener(this)
+    }
+
+    override fun onQueryTextSubmit(searchPath: String?): Boolean {
+        if (searchPath != null) {
+            searchApiData(searchPath.lowercase(Locale.getDefault()))
+        }
+        return true
+    }
+
+    override fun onQueryTextChange(searchPath: String?): Boolean {
+        if (searchPath != null) {
+            readDatabase()
+        }
+        return true
     }
 
     // Todo: load data from api every 5 seconds just between opening and closing market place(Schedule a worker)
@@ -96,6 +122,33 @@ class CryptosFragment : Fragment() {
         })
     }
 
+    private fun searchApiData(searchPath: String) {
+        showShimmerEffect()
+        mMainViewModel.searchCrypto(searchPath)
+        mMainViewModel.searchCryptoResponse.observe(viewLifecycleOwner, { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+                    hideShimmerEffect()
+                    val assetsCrypto = response.data
+                    val assets = assetsCrypto?.let { Assets(listOf(it.crypto), it.timestamp) }
+                    assets?.let { mAdapter.setData(it) }
+                }
+                is NetworkResult.Error -> {
+                    hideShimmerEffect()
+                    loadDataFromCache()
+                    Toast.makeText(
+                        requireContext(),
+                        response.message.toString(),
+                        Toast.LENGTH_SHORT
+                    )
+                }
+                is NetworkResult.Loading -> {
+                    showShimmerEffect()
+                }
+            }
+        })
+    }
+
     private fun loadDataFromCache() {
         lifecycleScope.launch {
             mMainViewModel.readAssets.observe(viewLifecycleOwner, { database ->
@@ -105,6 +158,7 @@ class CryptosFragment : Fragment() {
             })
         }
     }
+
     private fun showShimmerEffect() {
         binding.recyclerview.showShimmer()
     }
@@ -117,4 +171,5 @@ class CryptosFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+
 }
