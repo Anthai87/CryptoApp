@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mycryptoapp.viewmodels.MainViewModel
 import com.example.mycryptoapp.R
@@ -15,6 +16,7 @@ import com.example.mycryptoapp.adapters.CryptosAdapter
 import com.example.mycryptoapp.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_cryptos.view.*
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CryptosFragment : Fragment() {
@@ -46,15 +48,17 @@ class CryptosFragment : Fragment() {
 
     // Todo: load data from api every 5 seconds just between opening and closing market place(Schedule a worker)
     private fun readDatabase() {
-        mMainViewModel.readAssets.observe(viewLifecycleOwner, {database ->
-            if (database.isNotEmpty()) {
-                Log.d("RecipesFragment", "readDatabase called!")
-                mAdapter.setData(database[0].assets)
-                hideShimmerEffect()
-            } else {
-                requestApiData()
-            }
-        })
+        lifecycleScope.launch {
+            mMainViewModel.readAssets.observe(viewLifecycleOwner, {database ->
+                if (database.isNotEmpty()) {
+                    Log.d("RecipesFragment", "readDatabase called!")
+                    mAdapter.setData(database[0].assets)
+                    hideShimmerEffect()
+                } else {
+                    requestApiData()
+                }
+            })
+        }
     }
 
     private fun requestApiData() {
@@ -83,11 +87,13 @@ class CryptosFragment : Fragment() {
     }
 
     private fun loadDataFromCache() {
-        mMainViewModel.readAssets.observe(viewLifecycleOwner, { database ->
-            if (database.isNotEmpty()) {
-                mAdapter.setData(database[0].assets)
-            }
-        })
+        lifecycleScope.launch {
+            mMainViewModel.readAssets.observe(viewLifecycleOwner, { database ->
+                if (database.isNotEmpty()) {
+                    mAdapter.setData(database[0].assets)
+                }
+            })
+        }
     }
     private fun showShimmerEffect() {
         mView.recyclerview.showShimmer()
