@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mycryptoapp.viewmodels.MainViewModel
 import com.example.mycryptoapp.R
 import com.example.mycryptoapp.adapters.CryptosAdapter
+import com.example.mycryptoapp.databinding.FragmentCryptosBinding
 import com.example.mycryptoapp.util.NetworkResult
 import com.example.mycryptoapp.util.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,28 +23,36 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class CryptosFragment : Fragment() {
 
+    private var _binding: FragmentCryptosBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var mMainViewModel: MainViewModel
     private val mAdapter by lazy { CryptosAdapter() }
     private lateinit var mView: View
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mMainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mView = inflater.inflate(R.layout.fragment_cryptos, container, false)
-
-        mMainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        _binding = FragmentCryptosBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.mainViewModel = mMainViewModel
 
         setupRecyclerView()
         readDatabase()
 
-        return mView
+        return binding.root
     }
 
     private fun setupRecyclerView() {
-        mView.recyclerview.adapter = mAdapter
-        mView.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerview.adapter = mAdapter
+        binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
         showShimmerEffect()
     }
 
@@ -97,11 +106,15 @@ class CryptosFragment : Fragment() {
         }
     }
     private fun showShimmerEffect() {
-        mView.recyclerview.showShimmer()
+        binding.recyclerview.showShimmer()
     }
 
     private fun hideShimmerEffect() {
-        mView.recyclerview.hideShimmer()
+        binding.recyclerview.hideShimmer()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }
