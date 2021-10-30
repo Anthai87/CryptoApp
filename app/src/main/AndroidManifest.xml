@@ -15,7 +15,10 @@
         android:theme="@style/Theme.MyCryptoApp">
         <activity
             android:name=".ui.CryptoDetailsActivity"
+            android:label="Details"
+            android:theme="@style/CryptoDetailsActivityStyle"
             android:exported="true" />
+
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
