@@ -102,11 +102,12 @@
             android:layout_height="50dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="70dp"
-            android:background="@drawable/ETH"
+
             android:src="@drawable/ic_crypto"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ETH" />
+            app:layout_constraintTop_toTopOf="parent"/>
+           <!-- app:srcCompat="@drawable/ETH"
+           android:background="@drawable/ETH"-->
 
         <ImageView
             android:id="@+id/imageView3"
@@ -116,8 +117,8 @@
             android:layout_marginTop="30dp"
             android:src="@drawable/ic_crypto"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2"
-            app:srcCompat="@drawable/USDT" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"/>
+            <!--app:srcCompat="@drawable/USDT"-->
 
         <ImageView
             android:id="@+id/imageView4"
