@@ -13,8 +13,8 @@
         android:id="@+id/cryptoRowLayout"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp">
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp">
 
         <!--Todo: set to wrap contain later -> android:layout_height="80dp" -->
         <com.google.android.material.card.MaterialCardView
@@ -35,15 +35,16 @@
                 android:layout_height="match_parent"
                 android:background="@color/white">
 
+                <!--Todo: android:src="@{crypto.image}"-->
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:src="@drawable/btc"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
@@ -82,7 +83,7 @@
                     reformatPriceUsd="@{crypto.priceUsd}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="60dp"
+                    android:layout_marginStart="32dp"
                     android:text="$66381.04"
                     android:textColor="@color/darker"
                     android:textSize="18sp"

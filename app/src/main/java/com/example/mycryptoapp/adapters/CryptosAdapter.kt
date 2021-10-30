@@ -4,10 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mycryptoapp.R
 import com.example.mycryptoapp.databinding.CryptosRowLayoutBinding
 import com.example.mycryptoapp.models.Assets
 import com.example.mycryptoapp.models.Crypto
 import com.example.mycryptoapp.util.CryptosDiffUtil
+import kotlinx.android.synthetic.main.cryptos_row_layout.view.*
 
 class CryptosAdapter: ListAdapter<Crypto, CryptosAdapter.MyViewHolder>(CryptosDiffUtil()) {
 
@@ -35,6 +37,7 @@ class CryptosAdapter: ListAdapter<Crypto, CryptosAdapter.MyViewHolder>(CryptosDi
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentCrypto = getItem(position)
+        holder.itemView.imageView.setImageResource(R.drawable.btc)
         holder.bind(currentCrypto)
     }
 

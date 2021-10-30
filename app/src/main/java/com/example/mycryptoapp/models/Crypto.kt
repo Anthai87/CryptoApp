@@ -27,5 +27,5 @@ data class Crypto(
     @SerializedName("volumeUsd24Hr")
     val volumeUsd24Hr: String,
     @SerializedName("vwap24Hr")
-    val vwap24Hr: String
+    val vwap24Hr: String,
 )
