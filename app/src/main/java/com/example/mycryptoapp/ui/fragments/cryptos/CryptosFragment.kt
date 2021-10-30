@@ -1,6 +1,7 @@
 package com.example.mycryptoapp.ui.fragments.cryptos
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,7 +33,7 @@ class CryptosFragment : Fragment() {
         mMainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
         setupRecyclerView()
-        requestApiData()
+        readDatabase()
 
         return mView
     }
@@ -43,11 +44,21 @@ class CryptosFragment : Fragment() {
         showShimmerEffect()
     }
 
-    private fun showShimmerEffect() {
-        mView.recyclerview.showShimmer()
+    // Todo: load data from api every 5 seconds just between opening and closing market place(Schedule a worker)
+    private fun readDatabase() {
+        mMainViewModel.readAssets.observe(viewLifecycleOwner, {database ->
+            if (database.isNotEmpty()) {
+                Log.d("RecipesFragment", "readDatabase called!")
+                mAdapter.setData(database[0].assets)
+                hideShimmerEffect()
+            } else {
+                requestApiData()
+            }
+        })
     }
 
     private fun requestApiData() {
+        Log.d("RecipesFragment", "readApiData called!")
         mMainViewModel.getAssets()
         mMainViewModel.assetsResponse.observe(viewLifecycleOwner, { response ->
             when(response) {
@@ -57,6 +68,7 @@ class CryptosFragment : Fragment() {
                 }
                 is NetworkResult.Error -> {
                     hideShimmerEffect()
+                    loadDataFromCache()
                     Toast.makeText(
                         requireContext(),
                         response.message.toString(),
@@ -68,6 +80,17 @@ class CryptosFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun loadDataFromCache() {
+        mMainViewModel.readAssets.observe(viewLifecycleOwner, { database ->
+            if (database.isNotEmpty()) {
+                mAdapter.setData(database[0].assets)
+            }
+        })
+    }
+    private fun showShimmerEffect() {
+        mView.recyclerview.showShimmer()
     }
 
     private fun hideShimmerEffect() {
