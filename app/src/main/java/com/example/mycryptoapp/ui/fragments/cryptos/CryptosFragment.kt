@@ -14,6 +14,7 @@ import com.example.mycryptoapp.viewmodels.MainViewModel
 import com.example.mycryptoapp.R
 import com.example.mycryptoapp.adapters.CryptosAdapter
 import com.example.mycryptoapp.util.NetworkResult
+import com.example.mycryptoapp.util.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_cryptos.view.*
 import kotlinx.coroutines.launch
@@ -49,7 +50,7 @@ class CryptosFragment : Fragment() {
     // Todo: load data from api every 5 seconds just between opening and closing market place(Schedule a worker)
     private fun readDatabase() {
         lifecycleScope.launch {
-            mMainViewModel.readAssets.observe(viewLifecycleOwner, {database ->
+            mMainViewModel.readAssets.observeOnce(viewLifecycleOwner, {database ->
                 if (database.isNotEmpty()) {
                     Log.d("RecipesFragment", "readDatabase called!")
                     mAdapter.setData(database[0].assets)
