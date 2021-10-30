@@ -4,13 +4,13 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.mycryptoapp.data.Repository
+import com.example.mycryptoapp.data.database.AssetsEntity
 import com.example.mycryptoapp.models.Assets
 import com.example.mycryptoapp.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import retrofit2.Response
@@ -21,6 +21,10 @@ class MainViewModel @Inject constructor(
     application: Application
 ) : AndroidViewModel(application) {
 
+    /** ROOM DATABASE */
+    val readAssets: LiveData<List<AssetsEntity>> = repository.local.readDatabase().asLiveData()
+
+    /** RETROFIT */
     var assetsResponse: MutableLiveData<NetworkResult<Assets>> = MutableLiveData()
 
     fun getAssets() = viewModelScope.launch {
@@ -33,6 +37,11 @@ class MainViewModel @Inject constructor(
             try {
                 val response = repository.remote.getAssets()
                 assetsResponse.value = handleCryptoAssetsResponse(response)
+
+                val assets = assetsResponse.value!!.data
+                if (assets != null) {
+                    offlineCacheAssets(assets)
+                }
             } catch (e: Exception) {
                 assetsResponse.value = NetworkResult.Error("Assets not found.")
             }
@@ -40,6 +49,17 @@ class MainViewModel @Inject constructor(
             assetsResponse.value = NetworkResult.Error("No Internet Connection.")
         }
     }
+
+    private fun offlineCacheAssets(assets: Assets) {
+        val assetsEntity = AssetsEntity(assets)
+        insertAssets(assetsEntity)
+    }
+
+    private fun insertAssets(assetsEntity: AssetsEntity) =
+        /** ROOM DATABASE */
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.insertAssets(assetsEntity)
+        }
 
     private fun handleCryptoAssetsResponse(response: Response<Assets>): NetworkResult<Assets>? {
         when {
