@@ -1,13 +1,33 @@
 package com.example.mycryptoapp.bindingadapters
 
+import android.util.Log
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
+import androidx.navigation.findNavController
 import com.example.mycryptoapp.R
+import com.example.mycryptoapp.models.Crypto
+import com.example.mycryptoapp.ui.fragments.cryptos.CryptosFragmentDirections
+import java.lang.Exception
 
 class CryptosRowBinding {
 
     companion object {
+
+        @BindingAdapter("onCryptoClickListener")
+        @JvmStatic
+        fun onCryptoClickListener(cryptoRowLayout: ConstraintLayout, crypto: Crypto) {
+            cryptoRowLayout.setOnClickListener {
+                try {
+                    val action =
+                        CryptosFragmentDirections.actionCryptosFragmentToCryptoDetailsActivity(crypto)
+                    cryptoRowLayout.findNavController().navigate(action)
+                } catch (e: Exception) {
+                    Log.d("onCryptoClickListener", e.toString())
+                }
+            }
+        }
 
         @BindingAdapter("reformatCryptoSymbol")
         @JvmStatic

@@ -1,8 +1,11 @@
 package com.example.mycryptoapp.models
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Crypto(
     @SerializedName("changePercent24Hr")
     val changePercent24Hr: String,
@@ -28,4 +31,4 @@ data class Crypto(
     val volumeUsd24Hr: String,
     @SerializedName("vwap24Hr")
     val vwap24Hr: String,
-)
+): Parcelable

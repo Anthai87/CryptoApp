@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -85,4 +86,5 @@ dependencies {
 
     // Lifecycle
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
+
 }

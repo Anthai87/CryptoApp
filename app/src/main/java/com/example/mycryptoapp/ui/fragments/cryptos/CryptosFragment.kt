@@ -18,9 +18,11 @@ import com.example.mycryptoapp.models.Crypto
 import com.example.mycryptoapp.util.NetworkResult
 import com.example.mycryptoapp.util.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import java.util.*
 
+@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class CryptosFragment : Fragment(), SearchView.OnQueryTextListener {
 
