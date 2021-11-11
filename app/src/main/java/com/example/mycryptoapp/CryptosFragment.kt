@@ -16,7 +16,10 @@ import com.anychart.core.cartesian.series.Bar
 import kotlinx.android.synthetic.main.fragment_crypto.*
 import kotlinx.android.synthetic.main.fragment_cryptos.*
 import kotlinx.android.synthetic.main.fragment_cryptos.view.*
+import retrofit2.Call
+import retrofit2.Response
 import java.util.ArrayList
+import javax.security.auth.callback.Callback
 
 
 class CryptosFragment : Fragment() {
@@ -29,6 +32,13 @@ class CryptosFragment : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_cryptos, container, false)
+
+        val serviceGenerator = ServiceGenerator.buildService(ApiService::class.java)
+        val call = serviceGenerator.getAssets()
+
+        call.enqueue(object : Callback<MutableList<PostModel>>{
+
+        })
 
         // Inflate the layout for this fragment
         return view
@@ -54,8 +64,8 @@ class CryptosFragment : Fragment() {
         //pie.title("Salaries Overview")
         chartView1.setChart(pie)
 
-
-
-
     }
+
 }
+
+
