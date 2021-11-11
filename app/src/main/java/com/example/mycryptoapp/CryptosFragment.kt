@@ -5,21 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import com.anychart.AnyChart
-import com.anychart.AnyChartView
 import com.anychart.chart.common.dataentry.DataEntry
 import com.anychart.chart.common.dataentry.ValueDataEntry
-import com.anychart.charts.Cartesian
 import com.anychart.charts.Pie
-import com.anychart.core.cartesian.series.Bar
-import kotlinx.android.synthetic.main.fragment_crypto.*
 import kotlinx.android.synthetic.main.fragment_cryptos.*
-import kotlinx.android.synthetic.main.fragment_cryptos.view.*
-import retrofit2.Call
-import retrofit2.Response
-import java.util.ArrayList
-import javax.security.auth.callback.Callback
 
 
 class CryptosFragment : Fragment() {
@@ -36,9 +26,7 @@ class CryptosFragment : Fragment() {
         val serviceGenerator = ServiceGenerator.buildService(ApiService::class.java)
         val call = serviceGenerator.getAssets()
 
-        call.enqueue(object : Callback<MutableList<PostModel>>{
 
-        })
 
         // Inflate the layout for this fragment
         return view
