@@ -10,6 +10,16 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+
+    <!-- Text and card-row color  -->
     <color name="white">#FFFFFFFF</color>
+    <color name="lightGray">#CEF9F9F9</color>
+    <color name="gray">#A9A9A9</color>
+    <color name="dark">#1C2329</color>
+    <color name="darker">#151B20</color>
+    <color name="black">#000000</color>
+
+    <!-- ChangePercent24Hr color  -->
+    <color name="green">#00c9a7</color>
+    <color name="red">#FF0000</color>
 </resources>

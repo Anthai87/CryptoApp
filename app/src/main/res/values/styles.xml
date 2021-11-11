@@ -6,9 +6,25 @@
         <item name="colorPrimary">@color/colorPrimary</item> <!--my_app_primary_color-->
         <item name="colorSecondary">@color/colorPrimaryDark</item> <!--my_app_secondary_color-->
         <item name="android:colorBackground">@color/colorAccent</item> <!--my_app_background_color-->
-<!--
-        <item name="colorError">@color/my_app_error_color</item> &lt;!&ndash;my_app_error_color&ndash;&gt;
--->
-
     </style>
+
+    <style name="CryptoDetailsActivityStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item> <!--my_app_primary_color-->
+        <item name="colorSecondary">@color/colorPrimaryDark</item> <!--my_app_secondary_color-->
+        <item name="android:colorBackground">@color/colorAccent</item> <!--my_app_background_color-->
+        <item name="colorControlNormal">@color/white</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="CustomTableLayoutStyle" parent="Widget.Design.TabLayout">
+        <item name="background">@color/colorPrimary</item>
+        <item name="tabIndicatorColor">@color/white</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+    </style>
+
+    <style name="CustomTabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>
