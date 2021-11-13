@@ -7,27 +7,34 @@
 
     <fragment
         android:id="@+id/cryptosFragment"
-        android:name="com.example.mycryptoapp.CryptosFragment"
-        android:label="Cryptos"
-        tools:layout="@layout/fragment_cryptos" />
+        android:name="com.example.mycryptoapp.ui.fragments.cryptos.CryptosFragment"
+        android:label="Cryptos">
+        <action
+            android:id="@+id/action_cryptosFragment_to_cryptoDetailsActivity"
+            app:destination="@id/cryptoDetailsActivity" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteCryptosFragment"
-        android:name="com.example.mycryptoapp.FavoriteCryptosFragment"
+        android:name="com.example.mycryptoapp.ui.fragments.favorites.FavoriteCryptosFragment"
         android:label="Favorite Cryptos"
         tools:layout="@layout/fragment_favorite_cryptos" />
     <fragment
         android:id="@+id/myPortfolioFragment"
-        android:name="com.example.mycryptoapp.MyPortfolioFragment"
+        android:name="com.example.mycryptoapp.ui.fragments.portfolio.MyPortfolioFragment"
         android:label="My Portfolio"
         tools:layout="@layout/fragment_my_portfolio" />
     <fragment
         android:id="@+id/cryptoAdviceFragment"
-        android:name="com.example.mycryptoapp.CryptoAdviceFragment"
+        android:name="com.example.mycryptoapp.ui.fragments.cryptoadvice.CryptoAdviceFragment"
         android:label="Crypto Advice Investment"
         tools:layout="@layout/fragment_crypto_advice" />
-    <fragment
-        android:id="@+id/buyCrypto"
-        android:name="com.example.mycryptoapp.buyCrypto"
-        android:label="fragment_buy_crypto"
-        tools:layout="@layout/fragment_buy_crypto" />
+    <activity
+        android:id="@+id/cryptoDetailsActivity"
+        android:name="com.example.mycryptoapp.ui.CryptoDetailsActivity"
+        android:label="crypto_details"
+        tools:layout="@layout/activity_crypto_details" >
+        <argument
+            android:name="crypto"
+            app:argType="com.example.mycryptoapp.models.Crypto" />
+    </activity>
 </navigation>

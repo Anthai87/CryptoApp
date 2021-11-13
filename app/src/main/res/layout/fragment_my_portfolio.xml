@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyPortfolioFragment">
+    tools:context=".ui.fragments.portfolio.MyPortfolioFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
@@ -102,12 +102,11 @@
             android:layout_height="50dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="70dp"
-
+            android:background="@drawable/eth"
             android:src="@drawable/ic_crypto"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-           <!-- app:srcCompat="@drawable/ETH"
-           android:background="@drawable/ETH"-->
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/eth" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -117,8 +116,8 @@
             android:layout_marginTop="30dp"
             android:src="@drawable/ic_crypto"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2"/>
-            <!--app:srcCompat="@drawable/USDT"-->
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            app:srcCompat="@drawable/usdt" />
 
         <ImageView
             android:id="@+id/imageView4"
