@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="mainViewModel"
             type="com.example.mycryptoapp.viewmodels.MainViewModel" />
@@ -21,7 +22,6 @@
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -40,7 +40,7 @@
                     android:layout_marginBottom="4dp"
                     android:fontFamily="sans-serif"
                     android:text="Last Update: "
-                    android:textColor="@color/dark"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="October 20, 2021 2:41:37.247 PM"
-                    android:textColor="@color/darker"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/last_update_textView"
@@ -63,30 +63,56 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/portfolio_cardView"
             android:layout_width="0dp"
             android:layout_height="200dp"
-            android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/date_cardView">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+
+            <ImageView
+                android:id="@+id/portfolio_image"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/portfolio_card" />
 
-                <ImageView
-                    android:id="@+id/portfolio_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@drawable/portfolio_card" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/portfolio_image_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Points:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/portfolio_image"
+                app:layout_constraintStart_toStartOf="@+id/portfolio_image"
+                app:layout_constraintTop_toTopOf="@+id/portfolio_image" />
 
-        </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/portfolio_image_usd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="8dp"
+                android:text="10000 USD"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="38sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/portfolio_image_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/portfolio_image_text"
+                app:layout_constraintTop_toTopOf="@+id/portfolio_image_text" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <com.todkars.shimmer.ShimmerRecyclerView
             android:id="@+id/recyclerview"
