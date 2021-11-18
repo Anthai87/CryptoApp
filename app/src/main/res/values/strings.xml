@@ -5,5 +5,10 @@
     <string name="favorite_cryptos_fragment">Favorite Cryptos</string>
     <string name="my_portfolio_fragment">My Portfolio</string>
     <string name="crypto_advice_fragment">Crypto Advice</string>
+    <string name="todo">TODO</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="_200_000_us">200.000 US</string>
+    <string name="you_have_100_00_usd">You have 100.00 USD</string>
+    <string name="buy">BUY</string>
     <string name="search">search</string>
 </resources>
