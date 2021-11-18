@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_cryptosFragment_to_cryptoDetailsActivity"
             app:destination="@id/cryptoDetailsActivity" />
+        <action
+            android:id="@+id/action_cryptosFragment_to_myPortfolioFragment"
+            app:destination="@id/myPortfolioFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteCryptosFragment"
