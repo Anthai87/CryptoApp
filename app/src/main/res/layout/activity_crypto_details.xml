@@ -26,7 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:tabTextAppearance="@style/CustomTabTextStyle" />
+            app:tabTextAppearance="@style/CustomTabTextStyle"
+            tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -39,6 +40,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBar"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
