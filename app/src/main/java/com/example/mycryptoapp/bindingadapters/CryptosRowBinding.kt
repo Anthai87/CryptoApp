@@ -1,12 +1,14 @@
 package com.example.mycryptoapp.bindingadapters
 
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
 import com.example.mycryptoapp.R
+import coil.load
 import com.example.mycryptoapp.models.Crypto
 import com.example.mycryptoapp.ui.fragments.cryptos.CryptosFragmentDirections
 import java.lang.Exception
@@ -22,7 +24,9 @@ class CryptosRowBinding {
             cryptoRowLayout.setOnClickListener {
                 try {
                     val action =
-                        CryptosFragmentDirections.actionCryptosFragmentToCryptoDetailsActivity(crypto)
+                        CryptosFragmentDirections.actionCryptosFragmentToCryptoDetailsActivity(
+                            crypto
+                        )
                     cryptoRowLayout.findNavController().navigate(action)
                 } catch (e: Exception) {
                     Log.d("onCryptoClickListener", e.toString())
@@ -33,7 +37,7 @@ class CryptosRowBinding {
         @BindingAdapter("reformatCryptoSymbol")
         @JvmStatic
         fun reformatCryptoSymbol(textView: TextView, cryptoSymbol: String) {
-            textView.text = when(cryptoSymbol.trim().length) {
+            textView.text = when (cryptoSymbol.trim().length) {
                 1 -> "$cryptoSymbol       "
                 2 -> "$cryptoSymbol      "
                 3 -> "$cryptoSymbol     "
@@ -63,7 +67,20 @@ class CryptosRowBinding {
         @JvmStatic
         fun reformatChangePercent24Hr(textView: TextView, changePercent24Hr: String) {
             setColor(textView, changePercent24Hr)
-            textView.text = addPercentSign(addPlusOrMinusSign(setTwoDecimalToPercent(changePercent24Hr)))
+            textView.text =
+                addPercentSign(addPlusOrMinusSign(setTwoDecimalToPercent(changePercent24Hr)))
+        }
+
+        @BindingAdapter("loadImageFromURL")
+        @JvmStatic
+        fun loadImageFromURL(imageView: ImageView, currencyName: String) {
+
+            var imageURL1 = "https://static.coincap.io/assets/icons/"
+            var imageURL2 = "@2x.png"
+            var imageURL = imageURL1.plus(currencyName.toLowerCase()).plus(imageURL2)
+            imageView.load(imageURL) {
+                crossfade(600)
+            }
         }
 
         private fun setColor(textView: TextView, changePercent24Hr: String) {
