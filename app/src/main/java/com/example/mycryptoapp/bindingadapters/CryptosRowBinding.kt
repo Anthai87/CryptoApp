@@ -73,11 +73,11 @@ class CryptosRowBinding {
 
         @BindingAdapter("loadImageFromURL")
         @JvmStatic
-        fun loadImageFromURL(imageView: ImageView, currencyName: String) {
+        fun loadImageFromURL(imageView: ImageView, currencySymbol: String) {
 
             var imageURL1 = "https://static.coincap.io/assets/icons/"
             var imageURL2 = "@2x.png"
-            var imageURL = imageURL1.plus(currencyName.toLowerCase()).plus(imageURL2)
+            var imageURL = imageURL1.plus(currencySymbol.toLowerCase()).plus(imageURL2)
             imageView.load(imageURL) {
                 crossfade(600)
             }

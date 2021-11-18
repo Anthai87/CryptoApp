@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mycryptoapp.viewmodels.MainViewModel
 import com.example.mycryptoapp.R
@@ -18,6 +19,7 @@ import com.example.mycryptoapp.models.Crypto
 import com.example.mycryptoapp.util.NetworkResult
 import com.example.mycryptoapp.util.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_cryptos.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import java.util.*
@@ -52,7 +54,16 @@ class CryptosFragment : Fragment(), SearchView.OnQueryTextListener {
         setupRecyclerView()
         readDatabase()
 
+
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        portfolio_image.setOnClickListener {
+            val action = CryptosFragmentDirections.actionCryptosFragmentToMyPortfolioFragment()
+            findNavController().navigate(action)
+        }
     }
 
     private fun setupRecyclerView() {
