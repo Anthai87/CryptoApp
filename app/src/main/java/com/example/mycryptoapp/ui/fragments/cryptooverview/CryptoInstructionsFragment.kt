@@ -34,7 +34,6 @@ class CryptoInstructionsFragment : Fragment() {
         webView.settings.loadWithOverviewMode = true
         webView.settings.loadsImagesAutomatically = true
         webView.settings.useWideViewPort = true
-        webView.settings.builtInZoomControls = true
 
         view.instructions_webView.webViewClient = object : WebViewClient() {}
         val websiteUrl: String = myBundle!!.explorer
