@@ -18,3 +18,4 @@ class CryptoOverviewFragment : Fragment() {
     }
 
 }
+

@@ -90,5 +90,7 @@ dependencies {
     // Image Loading library Coil
     implementation "io.coil-kt:coil:0.13.0"
 
+    implementation 'com.robinhood.spark:spark:1.2.0'
+
 
 }
