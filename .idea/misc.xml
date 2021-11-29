@@ -4,7 +4,6 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Anthony/AndroidStudioProjects/MyCryptoApp/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
-
         <entry key="..\:/Users/Javad/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/activity_crypto_details.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Javad/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Javad/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/cryptos_row_layout.xml" value="0.23647604327666152" />
@@ -13,15 +12,15 @@
         <entry key="..\:/Users/Javad/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_crypto_transactions.xml" value="0.1" />
         <entry key="..\:/Users/Javad/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_cryptos.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/Javad/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/placeholder_shimmer_raw_layout.xml" value="0.1" />
-
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/activity_crypto_details.xml" value="0.1" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/cryptos_row_layout.xml" value="0.3" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_buy_crypto.xml" value="0.1" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_crypto.xml" value="0.1" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_crypto_advice.xml" value="0.1" />
+        <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_crypto_overview.xml" value="0.1" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_crypto_transactions.xml" value="0.1" />
-        <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_cryptos.xml" value="0.268" />
+        <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_cryptos.xml" value="0.15441176470588236" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_favorite_cryptos.xml" value="0.1" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_my_portfolio.xml" value="0.1" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/placeholder_shimmer_raw_layout.xml" value="0.2" />
