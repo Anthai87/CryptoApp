@@ -30,8 +30,8 @@ class CryptoDetailsActivity : AppCompatActivity() {
         fragments.add(CryptoTransactionsFragment())
 
         val titles = ArrayList<String>()
-        titles.add("Overview")
-        titles.add("Transactions")
+        titles.add("OVERVIEW")
+        titles.add("INSTRUCTIONS")
 
         val resultBundle = Bundle()
         resultBundle.putParcelable("cryptoBundle", args.crypto)
