@@ -12,6 +12,7 @@
         <entry key="..\:/Users/Javad/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_crypto_transactions.xml" value="0.1" />
         <entry key="..\:/Users/Javad/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_cryptos.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/Javad/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/placeholder_shimmer_raw_layout.xml" value="0.1" />
+        <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/drawable/corner.xml" value="0.1" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/activity_crypto_details.xml" value="0.1" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/cryptos_row_layout.xml" value="0.13636363636363635" />
@@ -21,7 +22,7 @@
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_crypto_instructions.xml" value="0.1" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_crypto_overview.xml" value="0.1" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_crypto_transactions.xml" value="0.1" />
-        <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_cryptos.xml" value="0.25245901639344265" />
+        <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_cryptos.xml" value="0.4" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_favorite_cryptos.xml" value="0.1" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/fragment_my_portfolio.xml" value="0.1" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/placeholder_shimmer_raw_layout.xml" value="0.2" />

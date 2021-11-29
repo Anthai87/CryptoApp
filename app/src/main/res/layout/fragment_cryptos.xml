@@ -76,14 +76,15 @@
 
             <ImageView
                 android:id="@+id/portfolio_image"
-                android:layout_width="wrap_content"
-                android:layout_height="130dp"
+                android:layout_width="370dp"
+                android:layout_height="150dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
                 app:srcCompat="@drawable/portfolio_card" />
 
             <TextView
@@ -95,6 +96,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="28sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/courgette"
                 app:layout_constraintBottom_toBottomOf="@+id/portfolio_image"
                 app:layout_constraintStart_toStartOf="@+id/portfolio_image"
                 app:layout_constraintTop_toTopOf="@+id/portfolio_image" />
@@ -103,9 +105,8 @@
                 android:id="@+id/portfolio_image_usd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginEnd="8dp"
-                android:text="10000 USD"
+                android:layout_marginStart="12dp"
+                android:text="10000 USD "
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="32sp"
                 android:textStyle="bold"
@@ -121,7 +122,6 @@
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
