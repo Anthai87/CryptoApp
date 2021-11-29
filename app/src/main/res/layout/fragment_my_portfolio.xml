@@ -62,7 +62,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="35dp"
             android:layout_marginEnd="30dp"
-            android:shadowColor="@color/material_on_background_disabled"
+            android:shadowColor="@color/black"
             android:text="Your total current points are the sum of current value of all of your currencies in USD."
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
