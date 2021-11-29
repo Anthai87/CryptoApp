@@ -107,6 +107,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="38sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/courgette"
                 app:layout_constraintBottom_toBottomOf="@+id/portfolio_image_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/portfolio_image_text"
