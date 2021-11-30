@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
 import com.example.mycryptoapp.R
 import com.example.mycryptoapp.ui.fragments.cryptoadvice.PagerAdapter
-import com.example.mycryptoapp.ui.fragments.overview.CryptoOverviewFragment
-import com.example.mycryptoapp.ui.fragments.overview.CryptoTransactionsFragment
+import com.example.mycryptoapp.ui.fragments.cryptooverview.CryptoInstructionsFragment
+import com.example.mycryptoapp.ui.fragments.cryptooverview.CryptoOverviewFragment
 import kotlinx.android.synthetic.main.activity_crypto_details.*
 
 class CryptoDetailsActivity : AppCompatActivity() {
@@ -27,11 +27,11 @@ class CryptoDetailsActivity : AppCompatActivity() {
 
         val fragments = ArrayList<Fragment>()
         fragments.add(CryptoOverviewFragment())
-        fragments.add(CryptoTransactionsFragment())
+        fragments.add(CryptoInstructionsFragment())
 
         val titles = ArrayList<String>()
-        titles.add("Overview")
-        titles.add("Transactions")
+        titles.add("OVERVIEW")
+        titles.add("INSTRUCTIONS")
 
         val resultBundle = Bundle()
         resultBundle.putParcelable("cryptoBundle", args.crypto)
