@@ -28,6 +28,15 @@ class FavoriteCryptosFragment : Fragment() {
         return inflater.inflate(R.layout.historical_chart_module, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
+
+
+   // fun setChartData()
+
+
     private fun setupChart(dailyDataListPair: Pair<List<Crypto>, Crypto?>) {
         historicalChartView.adapter = CryptoSparkAdapter(dailyDataListPair.first, dailyDataListPair.second?.priceUsd)
 
@@ -44,6 +53,7 @@ class FavoriteCryptosFragment : Fragment() {
 
 
     }
+
 }
 
 
