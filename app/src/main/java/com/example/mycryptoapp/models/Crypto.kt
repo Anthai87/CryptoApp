@@ -16,7 +16,7 @@ data class Crypto(
     @SerializedName("marketCapUsd")
     val marketCapUsd: String,
     @SerializedName("maxSupply")
-    val maxSupply: String,
+    val maxSupply: String?,
     @SerializedName("name")
     val name: String,
     @SerializedName("priceUsd")
