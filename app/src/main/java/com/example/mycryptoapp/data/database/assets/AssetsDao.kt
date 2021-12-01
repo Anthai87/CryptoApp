@@ -1,9 +1,11 @@
-package com.example.mycryptoapp.data.database.assets
+
+package com.example.mycryptoapp.data.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.mycryptoapp.data.database.assets.AssetsEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -1,4 +1,4 @@
-package com.example.mycryptoapp.data.database;
+package com.example.mycryptoapp.data.database.assets;
 
 
 import androidx.room.Entity;

@@ -3,6 +3,7 @@ package com.example.mycryptoapp.di
 import android.content.Context
 import androidx.room.Room
 import com.example.mycryptoapp.data.database.assets.AssetsDatabase
+import com.example.mycryptoapp.data.database.transactions.TransactionsDatabase
 import com.example.mycryptoapp.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -22,11 +23,11 @@ object DatabaseTransactionsModule {
         @ApplicationContext context: Context
     ) = Room.databaseBuilder(
         context,
-        AssetsDatabase::class.java,
+        TransactionsDatabase::class.java,
         Constants.DATABASE_NAME_SQLITE
     ).build()
 
     @Singleton
     @Provides
-    fun provideDao(database: AssetsDatabase) = database.assetsDao()
+    fun provideDao(database: TransactionsDatabase) = database.transactionsDao()
 }

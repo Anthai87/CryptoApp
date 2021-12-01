@@ -17,7 +17,7 @@ class Constants {
         // SQLite Database
         const val DATABASE_NAME_SQLITE = "transactions"
         const val DATABASE_VERSION_SQLITE = 1
-        const val TBL_TRANSACTIONS_HISTORY = "transactions_history"
+        const val TRANSACTIONS_HISTORY_TABLE = "transactions_history_table"
 
     }
 
