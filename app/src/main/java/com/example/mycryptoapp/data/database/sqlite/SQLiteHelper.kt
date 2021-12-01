@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import com.example.mycryptoapp.models.Transaction
 import com.example.mycryptoapp.util.Constants.Companion.DATABASE_NAME_SQLITE
 import com.example.mycryptoapp.util.Constants.Companion.DATABASE_VERSION_SQLITE
-import com.example.mycryptoapp.util.Constants.Companion.TBL_TRANSACTIONS_HISTORY
+import com.example.mycryptoapp.util.Constants.Companion.TRANSACTIONS_HISTORY_TABLE
 
 
 class SQLiteHelper(context: Context) :
@@ -23,14 +23,14 @@ class SQLiteHelper(context: Context) :
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val createTblTransactionsHistory = ("CREATE TABLE" + TBL_TRANSACTIONS_HISTORY + "("
+        val createTblTransactionsHistory = ("CREATE TABLE" + TRANSACTIONS_HISTORY_TABLE + "("
                 + TITLE + "TEXT," + SYMBOL + "TEXT,"
                 + DESCRIPTION + "TEXT," + DATETIME + "INTEGER PRIMARY KEY" + ")")
         db?.execSQL(createTblTransactionsHistory)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        db!!.execSQL("DROP TABLE IF EXISTS $TBL_TRANSACTIONS_HISTORY")
+        db!!.execSQL("DROP TABLE IF EXISTS $TRANSACTIONS_HISTORY_TABLE")
         onCreate(db)
     }
 
@@ -43,7 +43,7 @@ class SQLiteHelper(context: Context) :
         contentValues.put(DESCRIPTION, transaction.description)
         contentValues.put(DATETIME, System.currentTimeMillis())
 
-        val success = db.insert(TBL_TRANSACTIONS_HISTORY, null, contentValues)
+        val success = db.insert(TRANSACTIONS_HISTORY_TABLE, null, contentValues)
         db.close()
         return success
     }
@@ -51,7 +51,7 @@ class SQLiteHelper(context: Context) :
     @SuppressLint("Range")
     fun getAllTransaction(): ArrayList<Transaction> {
         val transactionList: ArrayList<Transaction> = ArrayList()
-        val selectQuery = "SELECT * FROM $TBL_TRANSACTIONS_HISTORY"
+        val selectQuery = "SELECT * FROM $TRANSACTIONS_HISTORY_TABLE"
         val db = this.readableDatabase
 
         val cursor: Cursor?
