@@ -28,7 +28,6 @@ class FavoriteCryptosFragment : Fragment() {
     private var selectedHour = HOUR
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,100 +40,99 @@ class FavoriteCryptosFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-
     }
 
 
-   /* fun setChartData(historicalChartModuleData: HistoricalChartModuleData) {
-        this.coinPrice = historicalChartModuleData.coinPrice
-        animateCoinPrice(historicalChartModuleData.coinPrice?.priceUsd)
+    /* fun setChartData(historicalChartModuleData: HistoricalChartModuleData) {
+         this.coinPrice = historicalChartModuleData.coinPrice
+         animateCoinPrice(historicalChartModuleData.coinPrice?.priceUsd)
 
-        if (historicalChartModuleData.historicalDataPair == null) {
-            showOrHideChartLoadingIndicator(true)
-        } else {
-            showOrHideChartLoadingIndicator(false)
+         if (historicalChartModuleData.historicalDataPair == null) {
+             showOrHideChartLoadingIndicator(true)
+         } else {
+             showOrHideChartLoadingIndicator(false)
 
-            historicalData = historicalChartModuleData.historicalDataPair.first
+             historicalData = historicalChartModuleData.historicalDataPair.first
 
-            setupChart(historicalChartModuleData.historicalDataPair)
-            if (historicalChartModuleData.period != ALL) {
-               // showPercentageGainOrLoss(historicalChartModuleData.historicalDataPair.first)
-            } else {
-                tvPortfolioChangedValue.text = ""
-                //showPositiveGainColor()
-            }
-            //showChartPeriodText(historicalChartModuleData.period)
+             setupChart(historicalChartModuleData.historicalDataPair)
+             if (historicalChartModuleData.period != ALL) {
+                // showPercentageGainOrLoss(historicalChartModuleData.historicalDataPair.first)
+             } else {
+                 tvPortfolioChangedValue.text = ""
+                 //showPositiveGainColor()
+             }
+             //showChartPeriodText(historicalChartModuleData.period)
 
-            addChartScrubListener()
-            addRangeSelectorListener(historicalChartModuleData.fromCurrency)
+             addChartScrubListener()
+             addRangeSelectorListener(historicalChartModuleData.fromCurrency)
 
-        }
-        historicalChartModuleData.historicalDataPair
-
-
-    }
-
-    private fun animateCoinPrice(amount: String?) {
-        if (amount != null) {
-            val chartCoinPriceAnimation =
-                ValueAnimator.ofFloat(tvChartCoinPrice.tag.toString().toFloat(), amount.toFloat())
-            chartCoinPriceAnimation.duration = chartAnimationDuration
-            chartCoinPriceAnimation.addUpdateListener { updatedAnimation ->
-                val animatedValue = updatedAnimation.animatedValue as Float
-                tvChartCoinPrice.text =
-                    formatter.formatAmount(animatedValue.toString(), currency)
-                tvChartCoinPrice.tag = animatedValue
-            }
-            chartCoinPriceAnimation.start()
-        }
-    }
+         }
+         historicalChartModuleData.historicalDataPair
 
 
-    private fun setupChart(dailyDataListPair: Pair<List<CryptoAsset>, CryptoAsset?>) {
-        historicalChartView.adapter =
-            CryptoSparkAdapter(dailyDataListPair.first, dailyDataListPair.second?.crypto?.priceUsd)
+     }
+
+     private fun animateCoinPrice(amount: String?) {
+         if (amount != null) {
+             val chartCoinPriceAnimation =
+                 ValueAnimator.ofFloat(tvChartCoinPrice.tag.toString().toFloat(), amount.toFloat())
+             chartCoinPriceAnimation.duration = chartAnimationDuration
+             chartCoinPriceAnimation.addUpdateListener { updatedAnimation ->
+                 val animatedValue = updatedAnimation.animatedValue as Float
+                 tvChartCoinPrice.text =
+                     formatter.formatAmount(animatedValue.toString(), currency)
+                 tvChartCoinPrice.tag = animatedValue
+             }
+             chartCoinPriceAnimation.start()
+         }
+     }
 
 
-        val baseLinePaint = historicalChartView.baseLinePaint
-        val dashPathEffect = DashPathEffect(floatArrayOf(10.0f, 2.0f), 0f)
-        baseLinePaint.pathEffect = dashPathEffect
-
-    }
-
-    private fun updateInforFordate(cryptoData: Crypto) {
+     private fun setupChart(dailyDataListPair: Pair<List<CryptoAsset>, CryptoAsset?>) {
+         historicalChartView.adapter =
+             CryptoSparkAdapter(dailyDataListPair.first, dailyDataListPair.second?.crypto?.priceUsd)
 
 
-    }
+         val baseLinePaint = historicalChartView.baseLinePaint
+         val dashPathEffect = DashPathEffect(floatArrayOf(10.0f, 2.0f), 0f)
+         baseLinePaint.pathEffect = dashPathEffect
 
-    interface OnHistoricalChardRangeSelectionListener {
-        fun onRangeSelected(period: String, fromCurrency: String, toCurrency: String)
-    }
+     }
 
-    private fun showOrHideChartLoadingIndicator(showLoading: Boolean) {
-        tvErrorGraph.visibility = View.GONE
-        if (showLoading) pbChartLoading.show() else pbChartLoading.hide()
-    }
-    private fun addChartScrubListener() {
-        historicalChartView.setScrubListener { value ->
-            if (value == null) { // reset the quantity
-                animateCoinPrice(coinPrice?.priceUsd)
-               // showPercentageGainOrLoss(historicalData)
-                //showChartPeriodText(selectedPeriod)
-            } else {
-                val historicalData = value as Crypto
-                tvPortfolioChangedValue.visibility = View.GONE
-               // tvPortfolioChangedDate.text = formatter.formatDate(historicalData.time, 1000)
-                //animateCoinPrice(historicalData.close)
-            }
-        }
-    }
+     private fun updateInforFordate(cryptoData: Crypto) {
 
-    data class HistoricalChartModuleData(
-        val coinPrice: Crypto?,
-        val period: String,
-        val fromCurrency: String,
-        val historicalDataPair: Pair<List<CryptoAsset>, CryptoAsset?>?
-    ) : ModuleItem*/
+
+     }
+
+     interface OnHistoricalChardRangeSelectionListener {
+         fun onRangeSelected(period: String, fromCurrency: String, toCurrency: String)
+     }
+
+     private fun showOrHideChartLoadingIndicator(showLoading: Boolean) {
+         tvErrorGraph.visibility = View.GONE
+         if (showLoading) pbChartLoading.show() else pbChartLoading.hide()
+     }
+     private fun addChartScrubListener() {
+         historicalChartView.setScrubListener { value ->
+             if (value == null) { // reset the quantity
+                 animateCoinPrice(coinPrice?.priceUsd)
+                // showPercentageGainOrLoss(historicalData)
+                 //showChartPeriodText(selectedPeriod)
+             } else {
+                 val historicalData = value as Crypto
+                 tvPortfolioChangedValue.visibility = View.GONE
+                // tvPortfolioChangedDate.text = formatter.formatDate(historicalData.time, 1000)
+                 //animateCoinPrice(historicalData.close)
+             }
+         }
+     }
+
+     data class HistoricalChartModuleData(
+         val coinPrice: Crypto?,
+         val period: String,
+         val fromCurrency: String,
+         val historicalDataPair: Pair<List<CryptoAsset>, CryptoAsset?>?
+     ) : ModuleItem*/
 
 }
 
