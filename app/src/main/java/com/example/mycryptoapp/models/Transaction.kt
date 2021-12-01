@@ -1,10 +1,12 @@
 package com.example.mycryptoapp.models
 
-import java.util.*
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Transaction(
-    var title: String,
+    val title: String,
     var description: String,
     var symbol: String,
     var dateTime: Int
-)
+): Parcelable

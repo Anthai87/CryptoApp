@@ -99,7 +99,7 @@ class CryptosFragment : Fragment(), SearchView.OnQueryTextListener {
         lifecycleScope.launch {
             mCryptosViewModel.readAssets.observeOnce(viewLifecycleOwner, { database ->
                 if (database.isNotEmpty()) {
-                    Log.d("RecipesFragment", "readDatabase called!")
+                    Log.d("CryptosFragment", "readDatabase called!")
                     mAdapter.setData(database[0].assets)
                     hideShimmerEffect()
                 } else {
@@ -110,7 +110,7 @@ class CryptosFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     private fun requestApiData() {
-        Log.d("RecipesFragment", "readApiData called!")
+        Log.d("CryptosFragment", "readApiData called!")
         mCryptosViewModel.getAssets()
         mCryptosViewModel.assetsResponse.observe(viewLifecycleOwner, { response ->
             when(response) {
