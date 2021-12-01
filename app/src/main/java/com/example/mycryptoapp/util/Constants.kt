@@ -13,6 +13,10 @@ class Constants {
         // ROOM Database
         const val DATABASE_NAME = "assets_database"
         const val ASSETS_TABLE = "assets_table"
+
+        // SQLite Database
+        const val DATABASE_NAME_SQLITE = "transactions"
+        const val DATABASE_VERSION_SQLITE = 1
     }
 
 }
