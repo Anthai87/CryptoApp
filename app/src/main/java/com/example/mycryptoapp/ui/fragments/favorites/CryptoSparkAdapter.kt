@@ -1,15 +1,16 @@
 package com.example.mycryptoapp.ui.fragments.favorites
 
 import com.example.mycryptoapp.models.Crypto
+import com.example.mycryptoapp.models.CryptoAsset
 import com.robinhood.spark.SparkAdapter
 
-class CryptoSparkAdapter(private val dailyData: List<Crypto>, private val baseLineValue: String?) :
+class CryptoSparkAdapter(private val dailyData: List<CryptoAsset>, private val baseLineValue: String?) :
     SparkAdapter() {
     override fun getY(index: Int): Float {
-        return dailyData[index].priceUsd.toFloat()
+        return dailyData[index].crypto.priceUsd.toFloat()
     }
 
-    override fun getItem(index: Int): Crypto {
+    override fun getItem(index: Int): CryptoAsset {
         return dailyData[index]
 
     }
