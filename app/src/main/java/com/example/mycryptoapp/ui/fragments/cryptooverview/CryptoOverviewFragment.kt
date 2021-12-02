@@ -49,7 +49,7 @@ class CryptoOverviewFragment : Fragment() {
 
 
         val cryptoname : String = crypto!!.name.plus("(").plus(crypto!!.symbol).plus(")")
-        binding.cryptoNAme.text = cryptoname
+        binding.cryptoName.text = cryptoname
 
         val cryptoPrice : String = "$".plus(String.format("%.2f", crypto.priceUsd.toDouble()))
         binding.cryptoprice.text =cryptoPrice.toString()

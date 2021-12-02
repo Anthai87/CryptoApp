@@ -54,18 +54,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
                 android:layout_marginEnd="40dp"
-                android:text="@string/textview"
+                android:text="CryptopriceStatic"
                 android:textColor="#00838F"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/cryptoNAme"
+                android:id="@+id/cryptoName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="40dp"
-                android:text="@string/textview"
+                android:text="CryptoNameStatic"
                 android:textColor="#2962FF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -37,7 +37,6 @@ class CryptosAdapter: ListAdapter<Crypto, CryptosAdapter.MyViewHolder>(CryptosDi
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentCrypto = getItem(position)
-        holder.itemView.imageView.setImageResource(R.drawable.btc)
         holder.bind(currentCrypto)
     }
 
