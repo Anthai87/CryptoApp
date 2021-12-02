@@ -7,9 +7,9 @@
         android:title="@string/cryptos_fragment" />
 
     <item
-        android:id="@+id/favoriteCryptosFragment"
+        android:id="@+id/transactionsFragment"
         android:icon="@drawable/ic_star"
-        android:title="@string/favorite_cryptos_fragment" />
+        android:title="@string/transactions" />
 
     <item
         android:id="@+id/myPortfolioFragment"

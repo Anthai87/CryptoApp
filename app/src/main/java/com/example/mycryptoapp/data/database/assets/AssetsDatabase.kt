@@ -1,8 +1,9 @@
-package com.example.mycryptoapp.data.database
+package com.example.mycryptoapp.data.database.assets
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.example.mycryptoapp.data.database.AssetsDao
 
 @Database(
     entities = [AssetsEntity::class],

@@ -5,10 +5,9 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.lifecycle.*
-import com.example.mycryptoapp.data.Repository
-import com.example.mycryptoapp.data.database.AssetsEntity
+import com.example.mycryptoapp.repository.Repository
+import com.example.mycryptoapp.data.database.assets.AssetsEntity
 import com.example.mycryptoapp.models.Assets
-import com.example.mycryptoapp.models.Crypto
 import com.example.mycryptoapp.models.CryptoAsset
 import com.example.mycryptoapp.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +17,7 @@ import javax.inject.Inject
 import retrofit2.Response
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
+class CryptosViewModel @Inject constructor(
     private val repository: Repository,
     application: Application
 ) : AndroidViewModel(application) {

@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.example.mycryptoapp.data.database.AssetsEntity
+import com.example.mycryptoapp.data.database.assets.AssetsEntity
 import com.example.mycryptoapp.models.Assets
 import com.example.mycryptoapp.util.NetworkResult
 

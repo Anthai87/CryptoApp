@@ -1,5 +1,7 @@
-package com.example.mycryptoapp.data
+package com.example.mycryptoapp.repository
 
+import com.example.mycryptoapp.data.LocalDataSource
+import com.example.mycryptoapp.data.RemoteDataSource
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import javax.inject.Inject
 
