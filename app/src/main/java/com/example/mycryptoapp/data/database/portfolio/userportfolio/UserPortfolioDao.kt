@@ -1,10 +1,8 @@
-package com.example.mycryptoapp.data.database.DAO
+package com.example.mycryptoapp.data.database.portfolio.userportfolio
 
 
 import androidx.room.*
-import com.example.mycryptoapp.data.database.Entity.UserPortfolioEntity
-import com.example.mycryptoapp.models.UserPortfolio
-import kotlinx.coroutines.flow.Flow
+
 @Dao
 interface UserPortfolioDao {
 

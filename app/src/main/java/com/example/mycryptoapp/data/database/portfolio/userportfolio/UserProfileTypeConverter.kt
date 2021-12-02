@@ -1,4 +1,4 @@
-package com.example.mycryptoapp.data.database.Typeconverter
+package com.example.mycryptoapp.data.database.portfolio.userportfolio
 
 import androidx.room.TypeConverter
 import com.example.mycryptoapp.models.UserPortfolio

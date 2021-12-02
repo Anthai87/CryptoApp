@@ -1,14 +1,9 @@
 package com.example.mycryptoapp.viewmodels
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.*
 import com.example.mycryptoapp.data.PointsRepository
-import com.example.mycryptoapp.data.database.Entity.InvestedCryptoEntity
-import com.example.mycryptoapp.data.database.Entity.UserPortfolioEntity
-import com.example.mycryptoapp.models.Crypto
-import com.example.mycryptoapp.models.CryptoAsset
-import com.example.mycryptoapp.models.InvestedCrypto
+import com.example.mycryptoapp.data.database.portfolio.investedcryptos.InvestedCryptoEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -1,13 +1,10 @@
 package com.example.mycryptoapp.data
 
-import com.example.mycryptoapp.data.database.AssetsDao
-import com.example.mycryptoapp.data.database.DAO.InvestedCryptosDao
-import com.example.mycryptoapp.data.database.DAO.UserPortfolioDao
+import com.example.mycryptoapp.data.database.portfolio.investedcryptos.InvestedCryptosDao
+import com.example.mycryptoapp.data.database.portfolio.userportfolio.UserPortfolioDao
 
-import com.example.mycryptoapp.data.database.Entity.InvestedCryptoEntity
-import com.example.mycryptoapp.data.database.Entity.UserPortfolioEntity
+import com.example.mycryptoapp.data.database.portfolio.investedcryptos.InvestedCryptoEntity
 import com.example.mycryptoapp.models.Crypto
-import com.example.mycryptoapp.models.UserPortfolio
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package com.example.mycryptoapp.data.database.Entity
+package com.example.mycryptoapp.data.database.portfolio.userportfolio
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

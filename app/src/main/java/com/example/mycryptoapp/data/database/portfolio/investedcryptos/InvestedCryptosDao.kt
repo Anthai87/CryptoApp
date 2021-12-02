@@ -1,9 +1,7 @@
-package com.example.mycryptoapp.data.database.DAO
+package com.example.mycryptoapp.data.database.portfolio.investedcryptos
 
 import androidx.room.*
-import com.example.mycryptoapp.data.database.Entity.InvestedCryptoEntity
 import com.example.mycryptoapp.models.Crypto
-import com.example.mycryptoapp.models.InvestedCrypto
 import kotlinx.coroutines.flow.Flow
 
 @Dao
