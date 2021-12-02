@@ -8,12 +8,12 @@ import javax.inject.Singleton
 import android.content.Context
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
-import com.example.mycryptoapp.data.database.AssetsDatabase
+import com.example.mycryptoapp.data.database.assets.AssetsDatabase
 import com.example.mycryptoapp.util.Constants.Companion.DATABASE_NAME
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DatabaseModule {
+object DatabaseAssetsModule {
 
     @Singleton
     @Provides

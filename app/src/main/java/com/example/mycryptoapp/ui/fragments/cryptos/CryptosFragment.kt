@@ -10,12 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mycryptoapp.viewmodels.MainViewModel
+import com.example.mycryptoapp.viewmodels.CryptosViewModel
 import com.example.mycryptoapp.R
 import com.example.mycryptoapp.adapters.CryptosAdapter
 import com.example.mycryptoapp.databinding.FragmentCryptosBinding
 import com.example.mycryptoapp.models.Assets
-import com.example.mycryptoapp.models.Crypto
 import com.example.mycryptoapp.util.NetworkResult
 import com.example.mycryptoapp.util.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,13 +30,13 @@ class CryptosFragment : Fragment(), SearchView.OnQueryTextListener {
     private var _binding: FragmentCryptosBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var mMainViewModel: MainViewModel
+    private lateinit var mCryptosViewModel: CryptosViewModel
     private val mAdapter by lazy { CryptosAdapter() }
     private lateinit var mView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mMainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        mCryptosViewModel = ViewModelProvider(requireActivity()).get(CryptosViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -47,12 +46,12 @@ class CryptosFragment : Fragment(), SearchView.OnQueryTextListener {
         // Inflate the layout for this fragment
         _binding = FragmentCryptosBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
-        binding.mainViewModel = mMainViewModel
+        binding.mainViewModel = mCryptosViewModel
 
         setHasOptionsMenu(true)
 
         setupRecyclerView()
-        readDatabase()
+        readDatabase() // TODO: 02-12-2021 Stop reading database from here
 
 
         return binding.root
@@ -96,11 +95,11 @@ class CryptosFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     // Todo: load data from api every 5 seconds just between opening and closing market place(Schedule a worker)
-    private fun readDatabase() {
+    private fun readDatabase() { //
         lifecycleScope.launch {
-            mMainViewModel.readAssets.observeOnce(viewLifecycleOwner, {database ->
+            mCryptosViewModel.readAssets.observeOnce(viewLifecycleOwner, { database ->
                 if (database.isNotEmpty()) {
-                    Log.d("RecipesFragment", "readDatabase called!")
+                    Log.d("CryptosFragment", "readDatabase called!")
                     mAdapter.setData(database[0].assets)
                     hideShimmerEffect()
                 } else {
@@ -111,9 +110,9 @@ class CryptosFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     private fun requestApiData() {
-        Log.d("RecipesFragment", "readApiData called!")
-        mMainViewModel.getAssets()
-        mMainViewModel.assetsResponse.observe(viewLifecycleOwner, { response ->
+        Log.d("CryptosFragment", "readApiData called!")
+        mCryptosViewModel.getAssets()
+        mCryptosViewModel.assetsResponse.observe(viewLifecycleOwner, { response ->
             when(response) {
                 is NetworkResult.Success -> {
                     hideShimmerEffect()
@@ -137,8 +136,8 @@ class CryptosFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private fun searchApiData(searchPath: String) {
         showShimmerEffect()
-        mMainViewModel.searchCrypto(searchPath)
-        mMainViewModel.searchCryptoResponse.observe(viewLifecycleOwner, { response ->
+        mCryptosViewModel.searchCrypto(searchPath)
+        mCryptosViewModel.searchCryptoResponse.observe(viewLifecycleOwner, { response ->
             when (response) {
                 is NetworkResult.Success -> {
                     hideShimmerEffect()
@@ -164,7 +163,7 @@ class CryptosFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private fun loadDataFromCache() {
         lifecycleScope.launch {
-            mMainViewModel.readAssets.observe(viewLifecycleOwner, { database ->
+            mCryptosViewModel.readAssets.observe(viewLifecycleOwner, { database ->
                 if (database.isNotEmpty()) {
                     mAdapter.setData(database[0].assets)
                 }

@@ -1,7 +1,7 @@
 package com.example.mycryptoapp.data
 
 import com.example.mycryptoapp.data.database.AssetsDao
-import com.example.mycryptoapp.data.database.AssetsEntity
+import com.example.mycryptoapp.data.database.assets.AssetsEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
