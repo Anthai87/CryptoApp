@@ -29,4 +29,14 @@ object DatabaseModule {
     @Provides
     fun provideDao(database: AssetsDatabase) = database.assetsDao()
 
+
+    @Singleton
+    @Provides
+    fun provideUserPortfolioDAO(database: AssetsDatabase) = database.userProfileDao()
+
+    @Singleton
+    @Provides
+    fun provideInvestedCryptoDAO(database: AssetsDatabase) = database.investedCryptosDao()
+
+
 }
