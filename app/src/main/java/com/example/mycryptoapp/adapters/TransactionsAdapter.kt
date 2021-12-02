@@ -3,39 +3,15 @@ package com.example.mycryptoapp.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mycryptoapp.R
-import kotlinx.android.synthetic.main.cryptos_row_layout.view.*
+import com.example.mycryptoapp.models.Transaction
+import kotlinx.android.synthetic.main.transactions_row_layout.view.*
 
-class TransactionsAdapter: RecyclerView.Adapter<TransactionsAdapter.ViewHolder>() {
-
-    private val kode = arrayOf("d116df5",
-        "36ffc75", "f5cfe78", "5b87628",
-        "db8d14e", "9913dc4", "e120f96",
-        "466251b")
-
-    private val kategori = arrayOf("Kekayaan", "Teknologi",
-        "Keluarga", "Bisnis",
-        "Keluarga", "Hutang",
-        "Teknologi", "Pidana")
-
-    private val isi = arrayOf("pertanyaan 9",
-        "pertanyaan 11", "pertanyaan 17", "test forum",
-        "pertanyaan 12", "pertanyaan 18", "pertanyaan 20",
-        "pertanyaan 21")
-
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var itemKode: TextView
-        var itemKategori: TextView
-        var itemIsi: TextView
-
-        init {
-            itemKode = itemView.findViewById(R.id.kodePertanyaan)
-            itemKategori = itemView.findViewById(R.id.kategori)
-            itemIsi = itemView.findViewById(R.id.isiPertanyaan)
-        }
-    }
+class TransactionsAdapter(var list: List<Transaction>) :
+    RecyclerView.Adapter<TransactionsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
         val v = LayoutInflater.from(viewGroup.context)
@@ -44,14 +20,29 @@ class TransactionsAdapter: RecyclerView.Adapter<TransactionsAdapter.ViewHolder>(
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        viewHolder.itemKode.text = kode[i]
-        viewHolder.itemKategori.text = kategori[i]
-        viewHolder.itemIsi.text = isi[i]
+        viewHolder.title.text = list.get(i).title
+        viewHolder.description.text = list.get(i).description
+        viewHolder.dateTime.text = list.get(i).dateTime.toString()
+
+        //viewHolder.cryptoImage.imageView.setImageResource(R.drawable.btc)
 
     }
 
     override fun getItemCount(): Int {
-        return kode.size
+        return list.size
+    }
+
+    fun setData(transactions: List<Transaction>) {
+        list = transactions
+        notifyDataSetChanged()
+    }
+
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var title: TextView = itemView.soldOrBoughtCrypto
+        var description: TextView = itemView.transaction_description
+        var dateTime: TextView = itemView.dateTime
+        var cryptoImage: ImageView = itemView.transaction_recycler_view_image
     }
 }
 

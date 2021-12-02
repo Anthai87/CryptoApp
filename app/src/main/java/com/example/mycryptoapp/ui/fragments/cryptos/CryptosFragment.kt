@@ -51,7 +51,7 @@ class CryptosFragment : Fragment(), SearchView.OnQueryTextListener {
         setHasOptionsMenu(true)
 
         setupRecyclerView()
-        readDatabase()
+        readDatabase() // TODO: 02-12-2021 Stop reading database from here
 
 
         return binding.root
@@ -95,7 +95,7 @@ class CryptosFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     // Todo: load data from api every 5 seconds just between opening and closing market place(Schedule a worker)
-    private fun readDatabase() {
+    private fun readDatabase() { //
         lifecycleScope.launch {
             mCryptosViewModel.readAssets.observeOnce(viewLifecycleOwner, { database ->
                 if (database.isNotEmpty()) {

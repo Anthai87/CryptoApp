@@ -20,13 +20,12 @@ import kotlinx.coroutines.launch
 
 class FavoriteCryptosFragment : Fragment() {
 
-    private lateinit var mTransactionsViewModel: TransactionsViewModel
-    private val mAdapter by lazy { TransactionsAdapter() }
+    //private val mAdapter by lazy { TransactionsAdapter() }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mTransactionsViewModel = ViewModelProvider(requireActivity()).get(TransactionsViewModel::class.java)
+       // mTransactionsViewModel = ViewModelProvider(requireActivity()).get(TransactionsViewModel::class.java)
     }
 
     override fun onCreateView(

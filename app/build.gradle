@@ -90,5 +90,14 @@ dependencies {
     // Image Loading library Coil
     implementation "io.coil-kt:coil:0.13.0"
 
+    // For Kotlin use paging-runtime-ktx
+    implementation "androidx.paging:paging-runtime:3.1.0"
+
+    // alternatively - without Android dependencies for testing
+    testImplementation "androidx.paging:paging-common:3.1.0" // For Kotlin use paging-common-ktx
+
+    // optional - RxJava support
+    implementation "androidx.paging:paging-rxjava2:3.1.0" // For Kotlin use paging-rxjava2-ktx
+
 
 }

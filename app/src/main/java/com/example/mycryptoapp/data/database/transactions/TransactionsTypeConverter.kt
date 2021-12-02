@@ -1,8 +1,6 @@
 package com.example.mycryptoapp.data.database.transactions
 
 import androidx.room.TypeConverter
-import com.example.mycryptoapp.models.Assets
-import com.example.mycryptoapp.models.Transaction
 import com.example.mycryptoapp.models.Transactions
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
