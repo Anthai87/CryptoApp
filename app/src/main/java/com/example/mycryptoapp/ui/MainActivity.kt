@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.cryptosFragment,
-                R.id.favoriteCryptosFragment,
+                R.id.transactionsFragment,
                 R.id.myPortfolioFragment,
                 R.id.cryptoAdviceFragment
             )

@@ -17,10 +17,10 @@
             app:destination="@id/myPortfolioFragment" />
     </fragment>
     <fragment
-        android:id="@+id/favoriteCryptosFragment"
-        android:name="com.example.mycryptoapp.ui.fragments.favorites.FavoriteCryptosFragment"
-        android:label="Favorite Cryptos"
-        tools:layout="@layout/fragment_favorite_cryptos" />
+        android:id="@+id/transactionsFragment"
+        android:name="com.example.mycryptoapp.ui.fragments.portfolio.TransactionsFragment"
+        android:label="Transactions"
+        tools:layout="@layout/fragment_transactions" />
     <fragment
         android:id="@+id/myPortfolioFragment"
         android:name="com.example.mycryptoapp.ui.fragments.portfolio.MyPortfolioFragment"
@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/cryptoAdviceFragment"
         android:name="com.example.mycryptoapp.ui.fragments.cryptoadvice.CryptoAdviceFragment"
-        android:label="Crypto Advice Investment"
+        android:label="Crypto Advicer Investment"
         tools:layout="@layout/fragment_crypto_advice" />
     <activity
         android:id="@+id/cryptoDetailsActivity"
@@ -40,9 +40,5 @@
             android:name="crypto"
             app:argType="com.example.mycryptoapp.models.Crypto" />
     </activity>
-    <fragment
-        android:id="@+id/transactionsFragment"
-        android:name="com.example.mycryptoapp.TransactionsFragment"
-        android:label="fragment_transactions"
-        tools:layout="@layout/fragment_transactions" />
+
 </navigation>

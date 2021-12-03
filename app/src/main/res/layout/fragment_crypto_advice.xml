@@ -8,6 +8,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="This page will be implemented in the future. The idea here is to analysis the twits in Twitter by Natural Language Processing, so we can give the user an advice about which crypto could be smart to invest in." />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
