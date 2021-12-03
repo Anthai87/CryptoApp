@@ -37,6 +37,12 @@
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/layout/placeholder_shimmer_raw_layout.xml" value="0.2" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/menu/botom_nav_menu.xml" value="0.1" />
         <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp/app/src/main/res/menu/cryptos_menu.xml" value="0.1" />
+        <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp01/app/src/main/res/layout/fragment_crypto_advice.xml" value="0.1" />
+        <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp01/app/src/main/res/layout/fragment_favorite_cryptos.xml" value="0.1" />
+        <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp01/app/src/main/res/layout/fragment_transactions.xml" value="0.11803444782168186" />
+        <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp01/app/src/main/res/layout/transactions_row_layout.xml" value="0.11803444782168186" />
+        <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp01/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="..\:/Users/md/AndroidStudioProjects/CryptoApp01/app/src/main/res/menu/cryptos_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

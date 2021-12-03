@@ -1,4 +1,4 @@
-package com.example.mycryptoapp
+package com.example.mycryptoapp.ui.fragments.portfolio
 
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mycryptoapp.R
 import com.example.mycryptoapp.adapters.TransactionsAdapter
 import com.example.mycryptoapp.models.Transaction
 import com.example.mycryptoapp.models.Transactions
@@ -43,7 +44,9 @@ class TransactionsFragment : Fragment() {
         layoutManager = LinearLayoutManager(activity)
         adapter = TransactionsAdapter(
             listOf(
-                Transaction("12", "", "", 432532215)
+                Transaction("Sold", "0.0001 BTC for 54.00 USD", "",
+                    System.currentTimeMillis().toInt()
+                )
             )
         )
 
@@ -57,12 +60,13 @@ class TransactionsFragment : Fragment() {
         return view
     }
 
+
     private fun insertDatabase() { //
         lifecycleScope.launch {
             mTransactionsViewModel.offlineCacheTransaction(
                 Transactions(
                     listOf(
-                        Transaction("12", "fdgfdgdf", "", 432532215),
+                        Transaction("sold", "0.001 BTC for 54.00 USD", "", 432532215),
                     )
                 )
             )

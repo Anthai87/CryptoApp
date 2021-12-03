@@ -44,7 +44,7 @@
             android:id="@+id/transaction_recycler_view_image"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="@drawable/btc"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"

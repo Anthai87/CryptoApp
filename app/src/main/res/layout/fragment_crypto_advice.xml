@@ -14,5 +14,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+        android:text="This page will be implemented in the future. The idea here is to analysis the twits in Twitter by Natural Language Processing, so we can give the user an advice about which crypto could be smart to invest in." />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
