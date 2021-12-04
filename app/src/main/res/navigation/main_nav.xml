@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/transactionsFragment"
-        android:name="com.example.mycryptoapp.ui.fragments.portfolio.TransactionsFragment"
+        android:name="com.example.mycryptoapp.ui.fragments.favorites.TransactionsFragment"
         android:label="Transactions"
         tools:layout="@layout/fragment_transactions" />
     <fragment

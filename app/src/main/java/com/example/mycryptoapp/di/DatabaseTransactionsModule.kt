@@ -2,7 +2,6 @@ package com.example.mycryptoapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.mycryptoapp.data.database.assets.AssetsDatabase
 import com.example.mycryptoapp.data.database.transactions.TransactionsDatabase
 import com.example.mycryptoapp.util.Constants
 import dagger.Module

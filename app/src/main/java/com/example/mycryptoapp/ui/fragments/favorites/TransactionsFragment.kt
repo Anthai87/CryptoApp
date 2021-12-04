@@ -1,4 +1,4 @@
-package com.example.mycryptoapp.ui.fragments.portfolio
+package com.example.mycryptoapp.ui.fragments.favorites
 
 import android.os.Bundle
 import android.util.Log
@@ -42,13 +42,7 @@ class TransactionsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_transactions, container, false)
 
         layoutManager = LinearLayoutManager(activity)
-        adapter = TransactionsAdapter(
-            listOf(
-                Transaction("Sold", "0.0001 BTC for 54.00 USD", "",
-                    System.currentTimeMillis().toInt()
-                )
-            )
-        )
+        adapter = TransactionsAdapter(listOf())
 
         view.transaction_recycler_view.layoutManager = layoutManager
         view.transaction_recycler_view.setHasFixedSize(true)
@@ -61,19 +55,20 @@ class TransactionsFragment : Fragment() {
     }
 
 
-    private fun insertDatabase() { //
+    private fun insertDatabase() {
         lifecycleScope.launch {
             mTransactionsViewModel.offlineCacheTransaction(
                 Transactions(
                     listOf(
                         Transaction("sold", "0.001 BTC for 54.00 USD", "", 432532215),
+                        Transaction("sold01", "0.001 BTC for 54.00 USD", "", 432532215),
                     )
                 )
             )
         }
     }
 
-    private fun readDatabase() { //
+    private fun readDatabase() {
         lifecycleScope.launch {
             mTransactionsViewModel.readTransactions.observeOnce(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.portfolio.TransactionsFragment">
+    tools:context=".ui.fragments.favorites.TransactionsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/transaction_recycler_view"
