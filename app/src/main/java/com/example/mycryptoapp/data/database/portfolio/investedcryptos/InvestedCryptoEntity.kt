@@ -1,6 +1,7 @@
 package com.example.mycryptoapp.data.database.portfolio.investedcryptos
 
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.mycryptoapp.models.Crypto
@@ -10,10 +11,10 @@ import com.example.mycryptoapp.util.Constants.Companion.INVESTED_TABLE
 data class InvestedCryptoEntity
     (
     @PrimaryKey(autoGenerate = true)
-    var id: Int? = null,
-    @ColumnInfo(name="crypto")
-    var crypto:Crypto,
+    var inid: Int? = null,
+    @Embedded
+    val crypto:Crypto?,
     @ColumnInfo(name="amount")
-    var amount:Double = 0.0,
+    var amount:Double? = 0.0,
     ) {
 }

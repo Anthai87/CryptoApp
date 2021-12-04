@@ -12,6 +12,7 @@ class Constants {
 
         // ROOM Database
         const val DATABASE_NAME = "assets_database"
+        const val PORTFOLIO_DATABASE_NAME = "portfolio_database"
         const val ASSETS_TABLE = "assets_table"
         const val INVESTED_TABLE = "invested_cryptos_table"
         const val USER_PORTFOLIO_TABLE = "user_profile_table"

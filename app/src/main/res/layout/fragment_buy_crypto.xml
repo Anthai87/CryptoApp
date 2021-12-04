@@ -5,11 +5,15 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.mycryptoapp.viewmodels.PortfolioViewModel" />
+            type="com.example.mycryptoapp.viewmodels.UserPortfolioViewModel" />
 
         <variable
             name="crypto"
             type="com.example.mycryptoapp.models.Crypto" />
+
+        <variable
+            name="investedCrypto"
+            type="com.example.mycryptoapp.data.database.portfolio.investedcryptos.InvestedCryptoEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -169,7 +173,8 @@
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/button_rounded"
                         android:text="@string/buy"
-                         app:layout_constraintBottom_toBottomOf="parent"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />

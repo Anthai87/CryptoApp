@@ -10,13 +10,12 @@ import coil.load
 import com.example.mycryptoapp.databinding.FragmentBuyCryptoBinding
 import com.example.mycryptoapp.models.Crypto
 import com.example.mycryptoapp.util.Constants
-import com.example.mycryptoapp.viewmodels.PortfolioViewModel
+import com.example.mycryptoapp.viewmodels.UserPortfolioViewModel
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class buyCryptoFragment : Fragment() {
-    private val myMainViewModel: PortfolioViewModel by viewModels()
+    private val myMainViewModelUser: UserPortfolioViewModel by viewModels()
     private lateinit var binding: FragmentBuyCryptoBinding
 
     override fun onCreateView(
@@ -33,7 +32,7 @@ class buyCryptoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
 
-        binding.viewModel = myMainViewModel
+        binding.viewModel = myMainViewModelUser
         val args = arguments
         val crypto= args?.getParcelable<Crypto>(Constants.CRYPTO_KEY)!!
         binding.crypto = crypto

@@ -8,7 +8,7 @@
             type="com.example.mycryptoapp.models.Crypto" />
         <variable
             name="viewModel"
-            type="com.example.mycryptoapp.viewmodels.PortfolioViewModel" />
+            type="com.example.mycryptoapp.viewmodels.UserPortfolioViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -91,31 +91,9 @@
                 android:layout_marginEnd="10dp"
                 android:background="#F6FAFF"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-
-                <EditText
-                    android:id="@+id/edittxt1"
-                    android:layout_width="100dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/button_rounded"
-                    android:text="edittext"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/amountOfCrypto"
-                    tools:ignore="DuplicateSpeakableTextCheck" />
-
-                <EditText
-                    android:id="@+id/amountOfCrypto"
-                    android:layout_width="100dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/button_rounded"
-                    android:text="edittext"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/overviewcryptoSymbol"
@@ -123,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="30dp"
-                    android:text="TextView"
+                    android:text="You have "
                     android:textColor="#000000 "
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -138,6 +116,26 @@
                     android:textColor="#000000 "
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/overviewcryptoSymbol" />
+
+                <TextView
+                    android:id="@+id/cryptoAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="30dp"
+                    android:text="text"
+                    app:layout_constraintStart_toEndOf="@+id/overviewcryptoSymbol"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/cryptoSymb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="30dp"
+                    android:text="TextView"
+                    app:layout_constraintStart_toEndOf="@+id/cryptoAmount"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -153,7 +151,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/Investment"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="80dp"
@@ -161,7 +159,7 @@
                     android:layout_marginEnd="80dp"
                     android:layout_marginBottom="30dp"
                     android:background="@drawable/button_rounded"
-                    android:text="@string/buy"
+                    android:text="Investment"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

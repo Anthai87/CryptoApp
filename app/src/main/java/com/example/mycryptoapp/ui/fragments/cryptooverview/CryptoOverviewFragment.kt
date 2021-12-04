@@ -17,12 +17,12 @@ import com.example.mycryptoapp.databinding.FragmentCryptoOverviewBinding
 import com.example.mycryptoapp.databinding.FragmentCryptosBinding
 import com.example.mycryptoapp.models.Crypto
 import com.example.mycryptoapp.util.Constants
-import com.example.mycryptoapp.viewmodels.PortfolioViewModel
+import com.example.mycryptoapp.viewmodels.UserPortfolioViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CryptoOverviewFragment : Fragment() {
-    private val myMainViewModel: PortfolioViewModel by viewModels()
+    private val myMainViewModel: UserPortfolioViewModel by viewModels()
     private lateinit var binding: FragmentCryptoOverviewBinding
 
 
@@ -61,6 +61,9 @@ class CryptoOverviewFragment : Fragment() {
         binding.cryptoImageView.load(imageURL){
             crossfade(600)
         }
+
+        binding.cryptoAmount.text=0.toString()
+        binding.cryptoSymb.text = crypto.symbol
     }
 }
 

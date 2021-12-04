@@ -8,7 +8,7 @@ import javax.inject.Singleton
 import android.content.Context
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
-import com.example.mycryptoapp.data.database.assets.AssetsDatabase
+import com.example.mycryptoapp.data.database.AssetsDatabase
 import com.example.mycryptoapp.util.Constants.Companion.DATABASE_NAME
 
 @Module
@@ -28,15 +28,6 @@ object DatabaseAssetsModule {
     @Singleton
     @Provides
     fun provideDao(database: AssetsDatabase) = database.assetsDao()
-
-
-    @Singleton
-    @Provides
-    fun provideUserPortfolioDAO(database: AssetsDatabase) = database.userProfileDao()
-
-    @Singleton
-    @Provides
-    fun provideInvestedCryptoDAO(database: AssetsDatabase) = database.investedCryptosDao()
 
 
 }
