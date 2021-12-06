@@ -12,7 +12,7 @@ class CryptosBinding {
 
     companion object {
 
-        @BindingAdapter("readApiResponse1", "readDatabase1", requireAll = true)
+        @BindingAdapter("readApiResponse1", "readDatabase1", requireAll = false)
         @JvmStatic
         fun errorImageViewVisibility(
             imageView: ImageView,
@@ -28,7 +28,7 @@ class CryptosBinding {
             }
         }
 
-        @BindingAdapter("readApiResponse2", "readDatabase2", requireAll = true)
+        @BindingAdapter("readApiResponse2", "readDatabase2", requireAll = false)
         @JvmStatic
         fun errorTextViewVisibility(
             textView: TextView,
@@ -44,6 +44,14 @@ class CryptosBinding {
                 textView.visibility = View.INVISIBLE
             }
         }
+
+
+        @BindingAdapter("reformatTimestamp")
+        @JvmStatic
+        fun reformatTimestamp(textView: TextView, timestamp: Long) {
+            textView.text = timestamp.toString()
+        }
+
 
     }
 }

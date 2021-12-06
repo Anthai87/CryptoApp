@@ -58,7 +58,6 @@ class CryptoDetailsActivity : AppCompatActivity() {
         binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
 
-    // Todo: bug when click on even row then go back to it
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             finish()

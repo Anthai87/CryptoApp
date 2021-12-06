@@ -54,7 +54,6 @@ class TransactionsFragment : Fragment() {
         return view
     }
 
-
     private fun insertDatabase() {
         lifecycleScope.launch {
             mTransactionsViewModel.offlineCacheTransaction(
