@@ -1,4 +1,4 @@
-package com.example.mycryptoapp.ui.fragments.favorites
+package com.example.mycryptoapp.ui.fragments.transactions
 
 import android.os.Bundle
 import android.util.Log
@@ -59,8 +59,8 @@ class TransactionsFragment : Fragment() {
             mTransactionsViewModel.offlineCacheTransaction(
                 Transactions(
                     listOf(
-                        Transaction("sold", "0.001 BTC for 54.00 USD", "", 432532215),
-                        Transaction("sold01", "0.001 BTC for 54.00 USD", "", 432532215),
+                        Transaction("sold", "0.001 BTC for 54.00 USD", "btc", 432532215),
+                        Transaction("sold01", "0.001 BTC for 54.00 USD", "eth", 432532215),
                     )
                 )
             )
