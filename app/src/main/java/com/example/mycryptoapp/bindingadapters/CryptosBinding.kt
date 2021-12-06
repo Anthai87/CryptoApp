@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.mycryptoapp.data.database.assets.AssetsEntity
+import com.example.mycryptoapp.logic.PortfolioLogic
 import com.example.mycryptoapp.models.Assets
 import com.example.mycryptoapp.util.NetworkResult
 
@@ -50,6 +51,12 @@ class CryptosBinding {
         @JvmStatic
         fun reformatTimestamp(textView: TextView, timestamp: Long) {
             textView.text = timestamp.toString()
+        }
+
+        @BindingAdapter("amount")
+        @JvmStatic
+        fun amount(textView: TextView, test: Long) {
+            textView.text = PortfolioLogic.portfolioAmount.toString() + " USD "
         }
 
 

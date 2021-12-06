@@ -19,7 +19,6 @@ import com.example.mycryptoapp.util.NetworkResult
 import com.example.mycryptoapp.util.observeOnce
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_cryptos.*
-import kotlinx.android.synthetic.main.fragment_cryptos.view.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import java.util.*
@@ -53,6 +52,7 @@ class CryptosFragment : Fragment(), SearchView.OnQueryTextListener {
 
         setupRecyclerView()
         readDatabase() // TODO: 02-12-2021 Stop reading database from here
+
 
         return binding.root
     }

@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="logic"
+            type="com.example.mycryptoapp.logic.PortfolioLogic" />
+
         <variable
         name="assets"
         type="com.example.mycryptoapp.models.Assets" />
@@ -113,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:text="10000 USD "
+                amount="@{-1}"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="32sp"
                 android:textStyle="bold"
