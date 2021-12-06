@@ -31,14 +31,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="40dp"
             android:text="15423,87 USD"
+            android:textStyle="bold"
+            android:fontFamily="@font/courgette"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp"
+            android:textSize="28sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
