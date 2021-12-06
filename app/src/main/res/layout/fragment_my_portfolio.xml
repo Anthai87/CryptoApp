@@ -100,9 +100,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/portfolio_crypto_recyclerView"
-            android:layout_width="246dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView11" />
