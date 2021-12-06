@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.mycryptoapp.viewmodels.UserPortfolioViewModel" />
+            type="com.example.mycryptoapp.viewmodels.PortfolioViewModel" />
 
         <variable
             name="crypto"
@@ -46,7 +46,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/buycryptoImageView"
+                    android:id="@+id/cryptoImageView"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:layout_marginStart="20dp"

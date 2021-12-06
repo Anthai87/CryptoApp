@@ -6,16 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import coil.load
 import com.example.mycryptoapp.databinding.FragmentBuyCryptoBinding
 import com.example.mycryptoapp.models.Crypto
 import com.example.mycryptoapp.util.Constants
-import com.example.mycryptoapp.viewmodels.UserPortfolioViewModel
+import com.example.mycryptoapp.viewmodels.PortfolioViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class buyCryptoFragment : Fragment() {
-    private val myMainViewModelUser: UserPortfolioViewModel by viewModels()
+    private val myMainViewModel: PortfolioViewModel by viewModels()
     private lateinit var binding: FragmentBuyCryptoBinding
 
     override fun onCreateView(
@@ -32,7 +31,8 @@ class buyCryptoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
 
-        binding.viewModel = myMainViewModelUser
+        binding.viewModel = myMainViewModel
+
         val args = arguments
         val crypto= args?.getParcelable<Crypto>(Constants.CRYPTO_KEY)!!
         binding.crypto = crypto
@@ -43,14 +43,6 @@ class buyCryptoFragment : Fragment() {
 
         val cryptoPrice : String = "$".plus(String.format("%.2f", crypto.priceUsd.toDouble()))
         binding.buycryptoprice.text =cryptoPrice.toString()
-
-        var imageURL1 = "https://static.coincap.io/assets/icons/"
-        var imageURL2 = "@2x.png"
-        var imageURL = imageURL1.plus(crypto.symbol.lowercase()).plus(imageURL2)
-
-        binding.buycryptoImageView.load(imageURL){
-            crossfade(600)
-        }
 
         binding.buycryptoSymbol.text=crypto.symbol.toString()
 
