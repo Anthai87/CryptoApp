@@ -13,7 +13,7 @@
 
         <variable
             name="investedCrypto"
-            type="com.example.mycryptoapp.data.database.portfolio.investedcryptos.InvestedCryptoEntity" />
+            type="com.example.mycryptoapp.models.InvestedCrypto" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -104,7 +104,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/edittxt1"
+                        android:id="@+id/cryptoamount"
                         android:layout_width="150dp"
                         android:layout_height="40dp"
                         android:layout_marginTop="10dp"
@@ -120,6 +120,7 @@
                         android:layout_height="40dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="30dp"
+                        amountToString="@{investedCrypto.amount}"
                         android:background="@drawable/button_rounded"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"

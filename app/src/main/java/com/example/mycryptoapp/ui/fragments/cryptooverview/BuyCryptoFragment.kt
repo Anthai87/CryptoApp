@@ -7,15 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import coil.load
+import com.example.mycryptoapp.data.database.portfolio.investedcryptos.InvestedCryptoEntity
 import com.example.mycryptoapp.databinding.FragmentBuyCryptoBinding
 import com.example.mycryptoapp.models.Crypto
+import com.example.mycryptoapp.models.InvestedCrypto
 import com.example.mycryptoapp.util.Constants
 import com.example.mycryptoapp.viewmodels.UserPortfolioViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class buyCryptoFragment : Fragment() {
-    private val myMainViewModelUser: UserPortfolioViewModel by viewModels()
+    private val portfolioViewModel: UserPortfolioViewModel by viewModels()
+    //private lateinit var myinvestedCrypto : InvestedCrypto
     private lateinit var binding: FragmentBuyCryptoBinding
 
     override fun onCreateView(
@@ -31,13 +34,16 @@ class buyCryptoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = portfolioViewModel
 
-        binding.viewModel = myMainViewModelUser
+
+
         val args = arguments
         val crypto= args?.getParcelable<Crypto>(Constants.CRYPTO_KEY)!!
         binding.crypto = crypto
 
-
+        var myinvestedCrypto = InvestedCrypto(crypto.name,crypto.symbol,0.0)
+        binding.investedCrypto = myinvestedCrypto
         val cryptoname : String = crypto!!.name.plus("(").plus(crypto!!.symbol).plus(")")
         binding.buycryptoNAme.text = cryptoname
 
@@ -55,12 +61,10 @@ class buyCryptoFragment : Fragment() {
         binding.buycryptoSymbol.text=crypto.symbol.toString()
 
         //FUNCTION BINDING
-        binding.buybutton.setOnClickListener{buyCrypto()}
-    }
-
-    private fun buyCrypto(){
+        binding.buybutton.setOnClickListener{portfolioViewModel.buyInvestedCrypto(myinvestedCrypto)}
 
     }
+
 }
 
 

@@ -11,6 +11,7 @@ import javax.inject.Inject
 import androidx.lifecycle.MutableLiveData
 import com.example.mycryptoapp.data.database.portfolio.userportfolio.UserPortfolioEntity
 import com.example.mycryptoapp.models.Crypto
+import com.example.mycryptoapp.models.InvestedCrypto
 
 
 val crypto = MutableLiveData<Crypto>()
@@ -22,24 +23,20 @@ class UserPortfolioViewModel @Inject constructor(
     application: Application
 ) : AndroidViewModel(application) {
 
-    private val getAllInvestedCryptos : LiveData<List<InvestedCryptoEntity>> = repository.local.readInvestedCryptos
+    private val allInvestedCryptos : LiveData<List<InvestedCryptoEntity>> = repository.local.readInvestedCryptos
     private val userPortfolio :LiveData<UserPortfolioEntity> = repository.local.getUserPortfolio()
 
+
     //BUY A CRYPTO
-    private fun buyInvestedCrypto(investedCryptoEntity: InvestedCryptoEntity) =
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.local.insertInvestedCrypto(investedCryptoEntity)
+    public fun buyInvestedCrypto(investedCrypto: InvestedCrypto) =
+    viewModelScope.launch(Dispatchers.IO) {
+        repository.local.insertInvestedCrypto(investedCrypto)
         }
-
-    //SEARCH CRYPTO BY NAME
-    private fun findInvestedCrypto(name: String) : LiveData<InvestedCryptoEntity>{
-        return repository.local.readInvestedCrypto(name)
-    }
-
     //Sel A crypto
     private fun sellInvestedCrypto(investedCryptoEntity: InvestedCryptoEntity) =
         viewModelScope.launch(Dispatchers.IO) {
             repository.local.deleteInvestedCrypto(investedCryptoEntity)
         }
+
 
 }
