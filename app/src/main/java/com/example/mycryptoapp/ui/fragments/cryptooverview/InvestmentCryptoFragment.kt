@@ -14,10 +14,7 @@ import coil.load
 import com.example.mycryptoapp.databinding.FragmentBuyCryptoBinding
 import com.example.mycryptoapp.logic.PortfolioLogic
 import com.example.mycryptoapp.logic.TransactionList
-import com.example.mycryptoapp.models.Crypto
-import com.example.mycryptoapp.models.InvestedCrypto
-import com.example.mycryptoapp.models.Transaction
-import com.example.mycryptoapp.models.Transactions
+import com.example.mycryptoapp.models.*
 import com.example.mycryptoapp.util.Constants
 import com.example.mycryptoapp.viewmodels.PortfolioViewModel
 import com.example.mycryptoapp.viewmodels.TransactionsViewModel
@@ -29,6 +26,7 @@ import kotlinx.coroutines.launch
 class InvestmentCryptoFragment : Fragment() {
 
     private lateinit var mTransactionsViewModel: TransactionsViewModel
+    private lateinit var mPortfolioViewModel: PortfolioViewModel
 
     private val myMainViewModel: PortfolioViewModel by viewModels()
     private lateinit var binding: FragmentBuyCryptoBinding
@@ -37,11 +35,12 @@ class InvestmentCryptoFragment : Fragment() {
     var userInputUsdOrCrypto = 0.0
 
     var transactionList = TransactionList.list.transactions
+    var investedCryptos = PortfolioLogic.portfolio.investedCryptos
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mTransactionsViewModel =
-            ViewModelProvider(requireActivity()).get(TransactionsViewModel::class.java)
+        mTransactionsViewModel = ViewModelProvider(requireActivity()).get(TransactionsViewModel::class.java)
+        mPortfolioViewModel = ViewModelProvider(requireActivity()).get(PortfolioViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -114,14 +113,14 @@ class InvestmentCryptoFragment : Fragment() {
             // Store buy in transaction
             storeBuyInTransactions()
 
-
             // Store buy in portfolio
-            val investedCrypto = InvestedCrypto(crypto, userInputUsdOrCrypto)
+            storeBuyInPortfolio()
 
         } else {
             Toast.makeText(context, "You have only: " + PortfolioLogic.portfolioAmount, Toast.LENGTH_LONG).show()
         }
     }
+
 
     private fun storeBuyInTransactions() {
         val cryptoAmount = PortfolioLogic.howMuchCryptoCouldBuy(userInputUsdOrCrypto.toString().toDouble(), crypto.priceUsd.toDouble()).toString()
@@ -137,15 +136,26 @@ class InvestmentCryptoFragment : Fragment() {
 
     }
 
+    private fun insertTransactionsDatabase(transactions: MutableList<Transaction>) {
+        mTransactionsViewModel.offlineCacheTransaction(Transactions(transactions))
+    }
+
+    private fun storeBuyInPortfolio() {
+        // Store buy in portfolio
+        val investedCrypto = InvestedCrypto(crypto, userInputUsdOrCrypto)
+        var investedCryptos = investedCryptos.map { it } as MutableList<InvestedCrypto>
+        investedCryptos.add(investedCrypto)
+
+        var portfolio = Portfolio(investedCryptos, PortfolioLogic.portfolioAmount)
+        insertPortfolioDatabase(portfolio)
+    }
+
+    private fun insertPortfolioDatabase(portfolio: Portfolio) {
+        mPortfolioViewModel.offlineCachePortfolio(portfolio)
+    }
 
     private fun sellCrypto() {
         Toast.makeText(context, "sell", Toast.LENGTH_SHORT).show()
-    }
-
-
-
-    private fun insertTransactionsDatabase(transactions: MutableList<Transaction>) {
-            mTransactionsViewModel.offlineCacheTransaction(Transactions(transactions))
     }
 
 }

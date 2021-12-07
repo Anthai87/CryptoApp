@@ -13,10 +13,7 @@ import kotlin.math.roundToLong
 object PortfolioLogic {
 
     var portfolioAmount = 10000.0
-    var list = Portfolio(listOf(
-        InvestedCrypto(Crypto("","","","","","","1234","","","btc","",""), 55.5),
-        InvestedCrypto(Crypto("","","","","","","1234","","","eth","",""), 50.5),),
-        portfolioAmount)
+    var portfolio = Portfolio(listOf(), portfolioAmount)
 
 
     fun hasEnoughMoney(amount: Double, moneyRequest: Double): Boolean {
@@ -34,6 +31,5 @@ object PortfolioLogic {
         val moneyAmount = cryptoAmount * cryptoPrice;
         return ceil(moneyAmount)
     }
-
 
 }

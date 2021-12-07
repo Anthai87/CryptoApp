@@ -1,6 +1,7 @@
 package com.example.mycryptoapp
 
 import android.app.Application
+import com.example.mycryptoapp.util.Constants.Companion.PORTFOLIO_DATABASE_NAME
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
@@ -10,5 +11,6 @@ class MyApplication: Application() {
         super.onCreate()
 
         // deleteDatabase(DATABASE_NAME); todo
+//        deleteDatabase(PORTFOLIO_DATABASE_NAME)
     }
 }

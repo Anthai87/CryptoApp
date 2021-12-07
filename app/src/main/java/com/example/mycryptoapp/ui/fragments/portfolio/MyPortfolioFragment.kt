@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mycryptoapp.R
 import com.example.mycryptoapp.adapters.PortfolioAdapter
 import com.example.mycryptoapp.logic.PortfolioLogic
-import com.example.mycryptoapp.logic.TransactionList
 import com.example.mycryptoapp.models.Crypto
 import com.example.mycryptoapp.models.InvestedCrypto
 import com.example.mycryptoapp.models.Portfolio
@@ -52,29 +51,14 @@ class MyPortfolioFragment : Fragment() {
         view.portfolio_crypto_recyclerView.setHasFixedSize(true)
         view.portfolio_crypto_recyclerView.adapter = adapter
 
-        insertDatabase()
-        readDatabase()
-
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        readDatabase()
     }
 
-    private fun insertDatabase() {
-        lifecycleScope.launch {
-            mPortfolioViewModel.offlineCachePortfolio(
-                Portfolio(
-                    listOf(
-                        InvestedCrypto(Crypto("","","","","","","1234","","","btc","",""), 55.5),
-                        InvestedCrypto(Crypto("","","","","","","1234","","","eth","",""), 50.5),
-                    ),
-                    32432.3
-                )
-            )
-        }
-    }
 
     private fun readDatabase() {
         lifecycleScope.launch {
@@ -82,7 +66,7 @@ class MyPortfolioFragment : Fragment() {
                 if (database.isNotEmpty()) {
                     Log.d("MyPortfolioFragment", "readDatabase called!")
                     adapter.setData(database[0].portfolio.investedCryptos)
-                    PortfolioLogic.list = database[0].portfolio
+                    PortfolioLogic.portfolio = database[0].portfolio
                 } else {
                     Log.d("MyPortfolioFragment", "readDatabase called!")
                 }

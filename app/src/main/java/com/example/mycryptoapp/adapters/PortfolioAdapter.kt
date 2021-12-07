@@ -13,6 +13,8 @@ import com.example.mycryptoapp.models.InvestedCrypto
 import com.example.mycryptoapp.models.Transaction
 import kotlinx.android.synthetic.main.cryptos_row_portfolio_layout.view.*
 import coil.load
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 class PortfolioAdapter(var list: List<InvestedCrypto>): RecyclerView.Adapter<PortfolioAdapter.ViewHolder>()  {
 
@@ -23,8 +25,10 @@ class PortfolioAdapter(var list: List<InvestedCrypto>): RecyclerView.Adapter<Por
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        viewHolder.cryptoAmount.text = PortfolioLogic.howMuchMoneyCouldGetWhenSell(list.get(i).amount, list.get(i).crypto.priceUsd.toDouble()).toString()
-        viewHolder.priceUSD.text = list.get(i).amount.toString()
+        viewHolder.cryptoAmount.text = PortfolioLogic.howMuchCryptoCouldBuy(list.get(i).amount,
+                    list.get(i).crypto.priceUsd.toDouble()
+                ).toString() + "x" + BigDecimal(list.get(i).crypto.priceUsd).setScale(2, RoundingMode.HALF_EVEN).toDouble()
+        viewHolder.priceUSD.text = list.get(i).amount.toString() + " USD"
 
         var imageURL1 = "https://static.coincap.io/assets/icons/"
         var imageURL2 = "@2x.png"
