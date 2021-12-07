@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.mycryptoapp.data.database.assets.AssetsEntity
+import com.example.mycryptoapp.logic.PortfolioLogic
 import com.example.mycryptoapp.models.Assets
 import com.example.mycryptoapp.util.NetworkResult
 
@@ -12,7 +13,7 @@ class CryptosBinding {
 
     companion object {
 
-        @BindingAdapter("readApiResponse1", "readDatabase1", requireAll = true)
+        @BindingAdapter("readApiResponse1", "readDatabase1", requireAll = false)
         @JvmStatic
         fun errorImageViewVisibility(
             imageView: ImageView,
@@ -28,7 +29,7 @@ class CryptosBinding {
             }
         }
 
-        @BindingAdapter("readApiResponse2", "readDatabase2", requireAll = true)
+        @BindingAdapter("readApiResponse2", "readDatabase2", requireAll = false)
         @JvmStatic
         fun errorTextViewVisibility(
             textView: TextView,
@@ -44,6 +45,20 @@ class CryptosBinding {
                 textView.visibility = View.INVISIBLE
             }
         }
+
+
+        @BindingAdapter("reformatTimestamp")
+        @JvmStatic
+        fun reformatTimestamp(textView: TextView, timestamp: Long) {
+            textView.text = timestamp.toString()
+        }
+
+        @BindingAdapter("amount")
+        @JvmStatic
+        fun amount(textView: TextView, test: Long) {
+            textView.text = PortfolioLogic.portfolioAmountTotal.toString() + " USD "
+        }
+
 
     }
 }

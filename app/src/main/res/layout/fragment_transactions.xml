@@ -4,13 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.favorites.TransactionsFragment">
+    tools:context=".ui.fragments.transactions.TransactionsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/transaction_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

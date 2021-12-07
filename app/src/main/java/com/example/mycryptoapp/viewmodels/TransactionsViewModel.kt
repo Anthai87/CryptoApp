@@ -20,7 +20,7 @@ class TransactionsViewModel @Inject constructor(private val transactionsReposito
     val readTransactions: LiveData<List<TransactionsEntity>> = transactionsRepository.local.readDatabase().asLiveData()
 
 
-    public fun offlineCacheTransaction(transactions: Transactions) {
+    fun offlineCacheTransaction(transactions: Transactions) {
         val transactionsEntity = TransactionsEntity(transactions)
         insertTransactions(transactionsEntity)
     }
@@ -28,7 +28,7 @@ class TransactionsViewModel @Inject constructor(private val transactionsReposito
     private fun insertTransactions(transactionsEntity: TransactionsEntity) =
         /** ROOM DATABASE */
         viewModelScope.launch(Dispatchers.IO) {
-            transactionsRepository.local.insertAssets(transactionsEntity)
+            transactionsRepository.local.insertTransactions(transactionsEntity)
         }
 
 

@@ -6,23 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
 import coil.load
-import com.example.mycryptoapp.R
-import com.example.mycryptoapp.adapters.CryptosAdapter
-import com.example.mycryptoapp.databinding.FragmentBuyCryptoBinding
 import com.example.mycryptoapp.databinding.FragmentCryptoOverviewBinding
-import com.example.mycryptoapp.databinding.FragmentCryptosBinding
 import com.example.mycryptoapp.models.Crypto
 import com.example.mycryptoapp.util.Constants
-import com.example.mycryptoapp.viewmodels.UserPortfolioViewModel
+import com.example.mycryptoapp.viewmodels.PortfolioViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CryptoOverviewFragment : Fragment() {
-    private val myMainViewModel: UserPortfolioViewModel by viewModels()
+    private val myMainViewModel: PortfolioViewModel by viewModels()
     private lateinit var binding: FragmentCryptoOverviewBinding
 
 

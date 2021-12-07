@@ -1,18 +1,16 @@
 package com.example.mycryptoapp.repository
 
-import com.example.mycryptoapp.data.LocalDataSource
-import com.example.mycryptoapp.data.LocalDataTransactionSource
-import com.example.mycryptoapp.data.RemoteDataSource
+import com.example.mycryptoapp.data.database.localdatasource.TransactionsLocalDataSource
 import dagger.hilt.android.scopes.ActivityRetainedScoped
 import javax.inject.Inject
 
 @ActivityRetainedScoped
 class TransactionsRepository @Inject constructor(
 
-    localDataTransactionSource: LocalDataTransactionSource
+    transactionsLocalDataSource: TransactionsLocalDataSource
 
 ) {
-    val local = localDataTransactionSource
+    val local = transactionsLocalDataSource
 
 }
 

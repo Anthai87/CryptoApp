@@ -8,7 +8,7 @@
             type="com.example.mycryptoapp.models.Crypto" />
         <variable
             name="viewModel"
-            type="com.example.mycryptoapp.viewmodels.UserPortfolioViewModel" />
+            type="com.example.mycryptoapp.viewmodels.PortfolioViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -184,7 +184,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/can_only_buy_usd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"

@@ -9,7 +9,7 @@ import android.content.Context
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import com.example.mycryptoapp.data.database.AssetsDatabase
-import com.example.mycryptoapp.util.Constants.Companion.DATABASE_NAME
+import com.example.mycryptoapp.util.Constants.Companion.ASSETS_DATABASE_NAME
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -22,12 +22,11 @@ object DatabaseAssetsModule {
     ) = Room.databaseBuilder(
         context,
         AssetsDatabase::class.java,
-        DATABASE_NAME
+        ASSETS_DATABASE_NAME
     ).build()
 
     @Singleton
     @Provides
     fun provideDao(database: AssetsDatabase) = database.assetsDao()
-
 
 }

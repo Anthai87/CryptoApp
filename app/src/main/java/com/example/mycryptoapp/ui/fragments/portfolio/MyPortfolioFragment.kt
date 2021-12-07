@@ -1,20 +1,82 @@
 package com.example.mycryptoapp.ui.fragments.portfolio
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mycryptoapp.R
+import com.example.mycryptoapp.adapters.PortfolioAdapter
+import com.example.mycryptoapp.logic.PortfolioLogic
+import com.example.mycryptoapp.models.Crypto
+import com.example.mycryptoapp.models.InvestedCrypto
+import com.example.mycryptoapp.models.Portfolio
+import com.example.mycryptoapp.util.observeOnce
+import com.example.mycryptoapp.viewmodels.PortfolioViewModel
+import kotlinx.android.synthetic.main.fragment_my_portfolio.view.*
+import kotlinx.android.synthetic.main.fragment_transactions.view.*
+import kotlinx.coroutines.launch
 
 class MyPortfolioFragment : Fragment() {
+
+    private lateinit var mPortfolioViewModel: PortfolioViewModel
+
+    private var layoutManager: RecyclerView.LayoutManager? = null
+    private lateinit var adapter: PortfolioAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mPortfolioViewModel =
+            ViewModelProvider(requireActivity()).get(PortfolioViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_portfolio, container, false)
+        var view = inflater.inflate(R.layout.fragment_my_portfolio, container, false)
+
+        var total = PortfolioLogic.portfolioAmount
+        for (investedCrypto in PortfolioLogic.portfolio.investedCryptos)
+            total += investedCrypto.amount
+        view.amount.text = total.toString() + " USD "
+        PortfolioLogic.portfolioAmountTotal = total
+
+        layoutManager = LinearLayoutManager(activity)
+        adapter = PortfolioAdapter(PortfolioLogic.portfolio.investedCryptos)
+
+        view.portfolio_crypto_recyclerView.layoutManager = layoutManager
+        view.portfolio_crypto_recyclerView.setHasFixedSize(true)
+        view.portfolio_crypto_recyclerView.adapter = adapter
+
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        readDatabase()
+    }
+
+
+    private fun readDatabase() {
+        lifecycleScope.launch {
+            mPortfolioViewModel.readPortfolio.observeOnce(viewLifecycleOwner) { database ->
+                if (database.isNotEmpty()) {
+                    Log.d("MyPortfolioFragment", "readDatabase called!")
+                    adapter.setData(database[database.size - 1].portfolio.investedCryptos)
+                    PortfolioLogic.portfolioAmount = database[database.size - 1].portfolio.points
+                    PortfolioLogic.portfolio = database[database.size - 1].portfolio
+                } else {
+                    Log.d("MyPortfolioFragment", "readDatabase called!")
+                }
+            }
+        }
     }
 
 }

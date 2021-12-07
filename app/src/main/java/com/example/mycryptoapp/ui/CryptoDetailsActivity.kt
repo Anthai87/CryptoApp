@@ -12,7 +12,7 @@ import com.example.mycryptoapp.databinding.ActivityCryptoDetailsBinding
 import com.example.mycryptoapp.ui.fragments.cryptoadvice.PagerAdapter
 import com.example.mycryptoapp.ui.fragments.cryptooverview.CryptoInstructionsFragment
 import com.example.mycryptoapp.ui.fragments.cryptooverview.CryptoOverviewFragment
-import com.example.mycryptoapp.ui.fragments.cryptooverview.buyCryptoFragment
+import com.example.mycryptoapp.ui.fragments.cryptooverview.InvestmentCryptoFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,7 +36,7 @@ class CryptoDetailsActivity : AppCompatActivity() {
 
         val fragments = ArrayList<Fragment>()
         fragments.add(CryptoOverviewFragment())
-        fragments.add(buyCryptoFragment())
+        fragments.add(InvestmentCryptoFragment())
         fragments.add(CryptoInstructionsFragment())
 
         val titles = ArrayList<String>()
@@ -58,7 +58,6 @@ class CryptoDetailsActivity : AppCompatActivity() {
         binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
 
-    // Todo: bug when click on even row then go back to it
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             finish()

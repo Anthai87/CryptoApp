@@ -46,7 +46,7 @@ class CryptosFragment : Fragment(), SearchView.OnQueryTextListener {
         // Inflate the layout for this fragment
         _binding = FragmentCryptosBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
-        binding.mainViewModel = mCryptosViewModel
+        binding.cryptosViewModel = mCryptosViewModel
 
         setHasOptionsMenu(true)
 

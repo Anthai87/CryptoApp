@@ -23,7 +23,7 @@ object DatabaseTransactionsModule {
     ) = Room.databaseBuilder(
         context,
         TransactionsDatabase::class.java,
-        Constants.DATABASE_NAME_SQLITE
+        Constants.TRANSACTIONS_DATABASE_NAME
     ).build()
 
     @Singleton

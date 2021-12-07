@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.mycryptoapp.R
 import com.example.mycryptoapp.models.Transaction
 import kotlinx.android.synthetic.main.transactions_row_layout.view.*
@@ -24,8 +25,12 @@ class TransactionsAdapter(var list: List<Transaction>) :
         viewHolder.description.text = list.get(i).description
         viewHolder.dateTime.text = list.get(i).dateTime.toString()
 
-        //viewHolder.cryptoImage.imageView.setImageResource(R.drawable.btc)
-
+        var imageURL1 = "https://static.coincap.io/assets/icons/"
+        var imageURL2 = "@2x.png"
+        var imageURL = imageURL1.plus(list.get(i).symbol.toLowerCase()).plus(imageURL2)
+        viewHolder.cryptoImage.load(imageURL) {
+            crossfade(600)
+        }
     }
 
     override fun getItemCount(): Int {

@@ -1,5 +1,9 @@
 package com.example.mycryptoapp.logic
 
+import com.example.mycryptoapp.models.Crypto
+import com.example.mycryptoapp.models.InvestedCrypto
+import com.example.mycryptoapp.models.Portfolio
+import com.example.mycryptoapp.models.Transactions
 import java.math.BigDecimal
 import java.math.RoundingMode
 import kotlin.math.ceil
@@ -7,6 +11,11 @@ import kotlin.math.roundToInt
 import kotlin.math.roundToLong
 
 object PortfolioLogic {
+
+    var portfolioAmountTotal = 0.0
+    var portfolioAmount = 10000.0
+    var portfolio = Portfolio(listOf(), 10000.0)
+
 
     fun hasEnoughMoney(amount: Double, moneyRequest: Double): Boolean {
         if (amount >= moneyRequest)
@@ -23,6 +32,5 @@ object PortfolioLogic {
         val moneyAmount = cryptoAmount * cryptoPrice;
         return ceil(moneyAmount)
     }
-
 
 }

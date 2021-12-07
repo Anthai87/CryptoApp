@@ -1,4 +1,4 @@
-package com.example.mycryptoapp.ui.fragments.favorites
+package com.example.mycryptoapp.ui.fragments.transactions
 
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mycryptoapp.R
 import com.example.mycryptoapp.adapters.TransactionsAdapter
+import com.example.mycryptoapp.logic.TransactionList
 import com.example.mycryptoapp.models.Transaction
 import com.example.mycryptoapp.models.Transactions
 import com.example.mycryptoapp.util.observeOnce
@@ -26,7 +27,6 @@ class TransactionsFragment : Fragment() {
 
     private var layoutManager: RecyclerView.LayoutManager? = null
     private lateinit var adapter: TransactionsAdapter
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,25 +48,16 @@ class TransactionsFragment : Fragment() {
         view.transaction_recycler_view.setHasFixedSize(true)
         view.transaction_recycler_view.adapter = adapter
 
-        insertDatabase()
         readDatabase()
 
         return view
     }
 
-
-    private fun insertDatabase() {
-        lifecycleScope.launch {
-            mTransactionsViewModel.offlineCacheTransaction(
-                Transactions(
-                    listOf(
-                        Transaction("sold", "0.001 BTC for 54.00 USD", "", 432532215),
-                        Transaction("sold01", "0.001 BTC for 54.00 USD", "", 432532215),
-                    )
-                )
-            )
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        readDatabase()
     }
+
 
     private fun readDatabase() {
         lifecycleScope.launch {
@@ -74,6 +65,7 @@ class TransactionsFragment : Fragment() {
                 if (database.isNotEmpty()) {
                     Log.d("CryptosFragment", "readDatabase called!")
                     adapter.setData(database[0].transactions.transactions)
+                    TransactionList.list = database[0].transactions
                 } else {
                     Log.d("CryptosFragment", "readDatabase called!")
                 }
