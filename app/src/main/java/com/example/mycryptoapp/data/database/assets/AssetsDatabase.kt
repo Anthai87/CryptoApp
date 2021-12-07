@@ -12,10 +12,9 @@ import com.example.mycryptoapp.data.database.assets.AssetsTypeConverter
 )
 @TypeConverters(
     AssetsTypeConverter::class,
-
 )
-
 abstract class AssetsDatabase : RoomDatabase() {
+
     abstract fun assetsDao(): AssetsDao
 
 }

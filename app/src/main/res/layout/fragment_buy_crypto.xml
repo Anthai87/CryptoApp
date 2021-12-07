@@ -12,8 +12,8 @@
             type="com.example.mycryptoapp.models.Crypto" />
 
         <variable
-            name="investedCrypto"
-            type="com.example.mycryptoapp.data.database.portfolio.investedcryptos.InvestedCryptoEntity" />
+            name="portfolio"
+            type="com.example.mycryptoapp.data.database.portfolioinvestedcryptos.PortfolioEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
