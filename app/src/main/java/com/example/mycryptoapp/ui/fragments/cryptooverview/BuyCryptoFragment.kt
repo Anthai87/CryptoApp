@@ -7,13 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.mycryptoapp.databinding.FragmentBuyCryptoBinding
+import com.example.mycryptoapp.logic.PortfolioLogic
 import com.example.mycryptoapp.models.Crypto
 import com.example.mycryptoapp.util.Constants
 import com.example.mycryptoapp.viewmodels.PortfolioViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_buy_crypto.*
 
 @AndroidEntryPoint
-class buyCryptoFragment : Fragment() {
+class BuyCryptoFragment : Fragment() {
     private val myMainViewModel: PortfolioViewModel by viewModels()
     private lateinit var binding: FragmentBuyCryptoBinding
 
@@ -45,6 +47,8 @@ class buyCryptoFragment : Fragment() {
         binding.buycryptoprice.text =cryptoPrice.toString()
 
         binding.buycryptoSymbol.text=crypto.symbol.toString()
+
+        can_only_buy_usd.text = "You have " + PortfolioLogic.portfolioAmount + " USD"
 
         //FUNCTION BINDING
         binding.buybutton.setOnClickListener{buyCrypto()}
