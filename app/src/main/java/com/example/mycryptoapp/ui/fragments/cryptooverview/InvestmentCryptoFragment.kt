@@ -1,5 +1,6 @@
 package com.example.mycryptoapp.ui.fragments.cryptooverview
 
+import android.database.sqlite.SQLiteDatabase.deleteDatabase
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -16,6 +17,7 @@ import com.example.mycryptoapp.logic.PortfolioLogic
 import com.example.mycryptoapp.logic.TransactionList
 import com.example.mycryptoapp.models.*
 import com.example.mycryptoapp.util.Constants
+import com.example.mycryptoapp.util.Constants.Companion.PORTFOLIO_DATABASE_NAME
 import com.example.mycryptoapp.viewmodels.PortfolioViewModel
 import com.example.mycryptoapp.viewmodels.TransactionsViewModel
 import dagger.hilt.android.AndroidEntryPoint

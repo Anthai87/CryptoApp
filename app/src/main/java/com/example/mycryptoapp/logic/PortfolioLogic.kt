@@ -13,7 +13,7 @@ import kotlin.math.roundToLong
 object PortfolioLogic {
 
     var portfolioAmount = 10000.0
-    var portfolio = Portfolio(listOf(), portfolioAmount)
+    var portfolio = Portfolio(listOf(), 10000.0)
 
 
     fun hasEnoughMoney(amount: Double, moneyRequest: Double): Boolean {

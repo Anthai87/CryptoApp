@@ -45,7 +45,7 @@ class MyPortfolioFragment : Fragment() {
         view.amount.text = PortfolioLogic.portfolioAmount.toString() + " USD "
 
         layoutManager = LinearLayoutManager(activity)
-        adapter = PortfolioAdapter(listOf())
+        adapter = PortfolioAdapter(PortfolioLogic.portfolio.investedCryptos)
 
         view.portfolio_crypto_recyclerView.layoutManager = layoutManager
         view.portfolio_crypto_recyclerView.setHasFixedSize(true)
@@ -65,8 +65,9 @@ class MyPortfolioFragment : Fragment() {
             mPortfolioViewModel.readPortfolio.observeOnce(viewLifecycleOwner) { database ->
                 if (database.isNotEmpty()) {
                     Log.d("MyPortfolioFragment", "readDatabase called!")
-                    adapter.setData(database[0].portfolio.investedCryptos)
-                    PortfolioLogic.portfolio = database[0].portfolio
+                    adapter.setData(database[database.size - 1].portfolio.investedCryptos)
+                    PortfolioLogic.portfolioAmount = database[database.size - 1].portfolio.points
+                    PortfolioLogic.portfolio = database[database.size - 1].portfolio
                 } else {
                     Log.d("MyPortfolioFragment", "readDatabase called!")
                 }
