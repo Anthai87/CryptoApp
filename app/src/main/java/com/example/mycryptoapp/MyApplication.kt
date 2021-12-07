@@ -10,6 +10,6 @@ class MyApplication: Application() {
     override fun onCreate() {
         super.onCreate()
 
-        deleteDatabase(DATABASE_NAME);
+        // deleteDatabase(DATABASE_NAME); todo
     }
 }

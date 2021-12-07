@@ -1,11 +1,16 @@
 package com.example.mycryptoapp.ui.fragments.cryptooverview
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.*
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.core.text.isDigitsOnly
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import coil.load
+import com.example.mycryptoapp.R
 import com.example.mycryptoapp.databinding.FragmentBuyCryptoBinding
 import com.example.mycryptoapp.logic.PortfolioLogic
 import com.example.mycryptoapp.models.Crypto
@@ -13,6 +18,8 @@ import com.example.mycryptoapp.util.Constants
 import com.example.mycryptoapp.viewmodels.PortfolioViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_buy_crypto.*
+import java.util.*
+
 
 @AndroidEntryPoint
 class BuyCryptoFragment : Fragment() {
@@ -48,15 +55,45 @@ class BuyCryptoFragment : Fragment() {
 
         binding.buycryptoSymbol.text=crypto.symbol.toString()
 
-        can_only_buy_usd.text = "You have " + PortfolioLogic.portfolioAmount + " USD"
+        var imageURL1 = "https://static.coincap.io/assets/icons/"
+        var imageURL2 = "@2x.png"
+        var imageURL = imageURL1.plus(crypto.symbol.lowercase()).plus(imageURL2)
+        binding.cryptoImageView.load(imageURL){
+            crossfade(600)
+        }
+
+        binding.canOnlyBuyUsd.text = "You have " + PortfolioLogic.portfolioAmount + " USD"
 
         //FUNCTION BINDING
         binding.buybutton.setOnClickListener{buyCrypto()}
+        binding.sellbutton.setOnClickListener{sellCrypto()}
+        binding.usdInput.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (count > 0)
+                    if (s.toString().isDigitsOnly())
+                        binding.amountOfCrypto.setText(PortfolioLogic.howMuchCryptoCouldBuy(s.toString().toDouble(), crypto.priceUsd.toDouble()).toString())
+            }
+        })
     }
 
-    private fun buyCrypto(){
 
+    private fun buyCrypto() {
+
+        Toast.makeText(context, "Hello Javatpoint", Toast.LENGTH_LONG).show()
     }
+
+
+    private fun sellCrypto() {
+        Toast.makeText(context, "sell", Toast.LENGTH_SHORT).show()
+    }
+
+
 }
 
 

@@ -8,7 +8,7 @@ import kotlin.math.roundToLong
 
 object PortfolioLogic {
 
-    var portfolioAmount = 10000
+    var portfolioAmount = 10000.0
 
     fun hasEnoughMoney(amount: Double, moneyRequest: Double): Boolean {
         if (amount >= moneyRequest)

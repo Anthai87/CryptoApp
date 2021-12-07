@@ -104,7 +104,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <EditText
-                        android:id="@+id/edittxt1"
+                        android:id="@+id/usd_input"
                         android:layout_width="150dp"
                         android:layout_height="40dp"
                         android:layout_marginTop="10dp"
