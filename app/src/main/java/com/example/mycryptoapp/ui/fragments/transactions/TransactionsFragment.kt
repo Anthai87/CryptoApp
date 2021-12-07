@@ -28,7 +28,6 @@ class TransactionsFragment : Fragment() {
     private var layoutManager: RecyclerView.LayoutManager? = null
     private lateinit var adapter: TransactionsAdapter
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mTransactionsViewModel =
@@ -49,30 +48,14 @@ class TransactionsFragment : Fragment() {
         view.transaction_recycler_view.setHasFixedSize(true)
         view.transaction_recycler_view.adapter = adapter
 
-        //insertDatabase()
-        //readDatabase()
-
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         readDatabase()
     }
 
-    private fun insertDatabase() {
-        lifecycleScope.launch {
-            mTransactionsViewModel.offlineCacheTransaction(
-                Transactions(
-                    listOf(
-                        Transaction("sold", "0.001 BTC for 54.00 USD", "btc", 432532215),
-                        Transaction("sold01", "0.001 BTC for 54.00 USD", "eth", 432532215),
-                    )
-                )
-            )
-        }
-    }
 
     private fun readDatabase() {
         lifecycleScope.launch {
