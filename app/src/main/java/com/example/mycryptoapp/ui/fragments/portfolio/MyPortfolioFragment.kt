@@ -42,7 +42,11 @@ class MyPortfolioFragment : Fragment() {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_my_portfolio, container, false)
 
-        view.amount.text = PortfolioLogic.portfolioAmount.toString() + " USD "
+        var total = PortfolioLogic.portfolioAmount
+        for (investedCrypto in PortfolioLogic.portfolio.investedCryptos)
+            total += investedCrypto.amount
+        view.amount.text = total.toString() + " USD "
+        PortfolioLogic.portfolioAmountTotal = total
 
         layoutManager = LinearLayoutManager(activity)
         adapter = PortfolioAdapter(PortfolioLogic.portfolio.investedCryptos)

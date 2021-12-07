@@ -56,7 +56,7 @@ class CryptosBinding {
         @BindingAdapter("amount")
         @JvmStatic
         fun amount(textView: TextView, test: Long) {
-            textView.text = PortfolioLogic.portfolioAmount.toString() + " USD "
+            textView.text = PortfolioLogic.portfolioAmountTotal.toString() + " USD "
         }
 
 
