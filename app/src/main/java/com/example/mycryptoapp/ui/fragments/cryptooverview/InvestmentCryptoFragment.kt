@@ -26,7 +26,7 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class BuyCryptoFragment : Fragment() {
+class InvestmentCryptoFragment : Fragment() {
 
     private lateinit var mTransactionsViewModel: TransactionsViewModel
 
@@ -106,6 +106,9 @@ class BuyCryptoFragment : Fragment() {
 
     private fun buyCrypto() {// todo if empty should not being called
         if (userInputUsdOrCrypto <= PortfolioLogic.portfolioAmount) {
+            binding.amountOfCrypto.setText("")
+            binding.usdInput.setText("")
+
             PortfolioLogic.portfolioAmount -= userInputUsdOrCrypto
 
             // Store buy in transaction
@@ -131,6 +134,7 @@ class BuyCryptoFragment : Fragment() {
         transactions.add(transaction)
         transactions.sortBy { it.dateTime }
         insertTransactionsDatabase(transactions)
+
     }
 
 
@@ -141,13 +145,8 @@ class BuyCryptoFragment : Fragment() {
 
 
     private fun insertTransactionsDatabase(transactions: MutableList<Transaction>) {
-        //lifecycleScope.launch {
             mTransactionsViewModel.offlineCacheTransaction(Transactions(transactions))
-       // }
     }
-
-
-
 
 }
 

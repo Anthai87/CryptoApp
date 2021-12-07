@@ -48,6 +48,8 @@ class TransactionsFragment : Fragment() {
         view.transaction_recycler_view.setHasFixedSize(true)
         view.transaction_recycler_view.adapter = adapter
 
+        readDatabase()
+
         return view
     }
 

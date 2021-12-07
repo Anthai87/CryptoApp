@@ -12,7 +12,7 @@ import com.example.mycryptoapp.databinding.ActivityCryptoDetailsBinding
 import com.example.mycryptoapp.ui.fragments.cryptoadvice.PagerAdapter
 import com.example.mycryptoapp.ui.fragments.cryptooverview.CryptoInstructionsFragment
 import com.example.mycryptoapp.ui.fragments.cryptooverview.CryptoOverviewFragment
-import com.example.mycryptoapp.ui.fragments.cryptooverview.BuyCryptoFragment
+import com.example.mycryptoapp.ui.fragments.cryptooverview.InvestmentCryptoFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,7 +36,7 @@ class CryptoDetailsActivity : AppCompatActivity() {
 
         val fragments = ArrayList<Fragment>()
         fragments.add(CryptoOverviewFragment())
-        fragments.add(BuyCryptoFragment())
+        fragments.add(InvestmentCryptoFragment())
         fragments.add(CryptoInstructionsFragment())
 
         val titles = ArrayList<String>()
