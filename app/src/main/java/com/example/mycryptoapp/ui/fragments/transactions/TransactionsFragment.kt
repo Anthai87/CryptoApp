@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mycryptoapp.R
 import com.example.mycryptoapp.adapters.TransactionsAdapter
+import com.example.mycryptoapp.logic.TransactionList
 import com.example.mycryptoapp.models.Transaction
 import com.example.mycryptoapp.models.Transactions
 import com.example.mycryptoapp.util.observeOnce
@@ -48,10 +49,16 @@ class TransactionsFragment : Fragment() {
         view.transaction_recycler_view.setHasFixedSize(true)
         view.transaction_recycler_view.adapter = adapter
 
-        insertDatabase()
-        readDatabase()
+        //insertDatabase()
+        //readDatabase()
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        readDatabase()
     }
 
     private fun insertDatabase() {
@@ -73,6 +80,7 @@ class TransactionsFragment : Fragment() {
                 if (database.isNotEmpty()) {
                     Log.d("CryptosFragment", "readDatabase called!")
                     adapter.setData(database[0].transactions.transactions)
+                    TransactionList.list = database[0].transactions
                 } else {
                     Log.d("CryptosFragment", "readDatabase called!")
                 }

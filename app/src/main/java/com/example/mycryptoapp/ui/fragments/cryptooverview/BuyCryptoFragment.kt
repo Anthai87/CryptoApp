@@ -5,26 +5,44 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.*
 import android.widget.Toast
-import androidx.appcompat.widget.SearchView
 import androidx.core.text.isDigitsOnly
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import coil.load
-import com.example.mycryptoapp.R
 import com.example.mycryptoapp.databinding.FragmentBuyCryptoBinding
 import com.example.mycryptoapp.logic.PortfolioLogic
+import com.example.mycryptoapp.logic.TransactionList
 import com.example.mycryptoapp.models.Crypto
+import com.example.mycryptoapp.models.InvestedCrypto
+import com.example.mycryptoapp.models.Transaction
+import com.example.mycryptoapp.models.Transactions
 import com.example.mycryptoapp.util.Constants
 import com.example.mycryptoapp.viewmodels.PortfolioViewModel
+import com.example.mycryptoapp.viewmodels.TransactionsViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_buy_crypto.*
-import java.util.*
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
 class BuyCryptoFragment : Fragment() {
+
+    private lateinit var mTransactionsViewModel: TransactionsViewModel
+
     private val myMainViewModel: PortfolioViewModel by viewModels()
     private lateinit var binding: FragmentBuyCryptoBinding
+
+    lateinit var crypto: Crypto
+    var userInputUsdOrCrypto = 0.0
+
+    var transactionList = TransactionList.list.transactions
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mTransactionsViewModel =
+            ViewModelProvider(requireActivity()).get(TransactionsViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,7 +61,7 @@ class BuyCryptoFragment : Fragment() {
         binding.viewModel = myMainViewModel
 
         val args = arguments
-        val crypto= args?.getParcelable<Crypto>(Constants.CRYPTO_KEY)!!
+        crypto = args?.getParcelable(Constants.CRYPTO_KEY)!!
         binding.crypto = crypto
 
 
@@ -76,22 +94,59 @@ class BuyCryptoFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (count > 0)
-                    if (s.toString().isDigitsOnly())
-                        binding.amountOfCrypto.setText(PortfolioLogic.howMuchCryptoCouldBuy(s.toString().toDouble(), crypto.priceUsd.toDouble()).toString())
+                    if (s.toString().isDigitsOnly()) {
+                        val usdAmount = PortfolioLogic.howMuchCryptoCouldBuy(s.toString().toDouble(), crypto.priceUsd.toDouble()).toString()
+                        binding.amountOfCrypto.setText(usdAmount)
+                        userInputUsdOrCrypto = s.toString().toDouble()
+                    }
             }
         })
     }
 
 
-    private fun buyCrypto() {
+    private fun buyCrypto() {// todo if empty should not being called
+        if (userInputUsdOrCrypto <= PortfolioLogic.portfolioAmount) {
+            PortfolioLogic.portfolioAmount -= userInputUsdOrCrypto
 
-        Toast.makeText(context, "Hello Javatpoint", Toast.LENGTH_LONG).show()
+            // Store buy in transaction
+            storeBuyInTransactions()
+
+
+            // Store buy in portfolio
+            val investedCrypto = InvestedCrypto(crypto, userInputUsdOrCrypto)
+
+        } else {
+            Toast.makeText(context, "You have only: " + PortfolioLogic.portfolioAmount, Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun storeBuyInTransactions() {
+        val cryptoAmount = PortfolioLogic.howMuchCryptoCouldBuy(userInputUsdOrCrypto.toString().toDouble(), crypto.priceUsd.toDouble()).toString()
+        val transaction = Transaction("BOUGHT",
+            cryptoAmount+ " " + crypto.symbol + " for " + userInputUsdOrCrypto + " USD",
+            crypto.symbol, System.currentTimeMillis().toInt())
+
+
+        var transactions = transactionList.map { it } as MutableList<Transaction>
+        transactions.add(transaction)
+        transactions.sortBy { it.dateTime }
+        insertTransactionsDatabase(transactions)
     }
 
 
     private fun sellCrypto() {
         Toast.makeText(context, "sell", Toast.LENGTH_SHORT).show()
     }
+
+
+
+    private fun insertTransactionsDatabase(transactions: MutableList<Transaction>) {
+        //lifecycleScope.launch {
+            mTransactionsViewModel.offlineCacheTransaction(Transactions(transactions))
+       // }
+    }
+
+
 
 
 }
