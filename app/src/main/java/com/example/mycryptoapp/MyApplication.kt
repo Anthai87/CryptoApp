@@ -12,7 +12,7 @@ class MyApplication: Application() {
     override fun onCreate() {
         super.onCreate()
 
-        //deleteDatabase(ASSETS_DATABASE_NAME); //todo
+        deleteDatabase(ASSETS_DATABASE_NAME); //todo
         //deleteDatabase(TRANSACTIONS_DATABASE_NAME)
         //deleteDatabase(PORTFOLIO_DATABASE_NAME)
     }
