@@ -12,7 +12,7 @@ import kotlin.math.roundToLong
 
 object PortfolioLogic {
 
-    var portfolioAmountTotal = 0.0
+    var portfolioAmountTotal = 10000.0
     var portfolioAmount = 10000.0
     var portfolio = Portfolio(listOf(), 10000.0)
 
