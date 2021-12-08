@@ -119,6 +119,8 @@ class InvestmentCryptoFragment : Fragment() {
             storeBuyInPortfolio()
 
         } else {
+            binding.amountOfCrypto.setText("")
+            binding.usdInput.setText("")
             Toast.makeText(context, "You have only: " + PortfolioLogic.portfolioAmount, Toast.LENGTH_LONG).show()
         }
     }
