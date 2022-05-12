@@ -1,14 +1,9 @@
 package com.example.mycryptoapp.logic
 
-import com.example.mycryptoapp.models.Crypto
-import com.example.mycryptoapp.models.InvestedCrypto
 import com.example.mycryptoapp.models.Portfolio
-import com.example.mycryptoapp.models.Transactions
 import java.math.BigDecimal
 import java.math.RoundingMode
 import kotlin.math.ceil
-import kotlin.math.roundToInt
-import kotlin.math.roundToLong
 
 object PortfolioLogic {
 
